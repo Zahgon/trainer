@@ -43,40 +43,28 @@ type TrainJobStatusApplyConfiguration struct {
 
 // TrainJobStatusApplyConfiguration constructs a declarative configuration of the TrainJobStatus type for use with
 // apply.
-func TrainJobStatus() *TrainJobStatusApplyConfiguration {
-	return &TrainJobStatusApplyConfiguration{}
-}
+func TrainJobStatus() *TrainJobStatusApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithConditions adds the given value to the Conditions field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the Conditions field.
 func (b *TrainJobStatusApplyConfiguration) WithConditions(values ...*v1.ConditionApplyConfiguration) *TrainJobStatusApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithConditions")
-		}
-		b.Conditions = append(b.Conditions, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithJobsStatus adds the given value to the JobsStatus field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the JobsStatus field.
 func (b *TrainJobStatusApplyConfiguration) WithJobsStatus(values ...*JobStatusApplyConfiguration) *TrainJobStatusApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithJobsStatus")
-		}
-		b.JobsStatus = append(b.JobsStatus, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithTrainerStatus sets the TrainerStatus field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the TrainerStatus field is set to the value of the last call.
 func (b *TrainJobStatusApplyConfiguration) WithTrainerStatus(value *TrainerStatusApplyConfiguration) *TrainJobStatusApplyConfiguration {
-	b.TrainerStatus = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

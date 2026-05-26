@@ -40,30 +40,29 @@ type RuntimePatchApplyConfiguration struct {
 
 // RuntimePatchApplyConfiguration constructs a declarative configuration of the RuntimePatch type for use with
 // apply.
-func RuntimePatch() *RuntimePatchApplyConfiguration {
-	return &RuntimePatchApplyConfiguration{}
-}
+func RuntimePatch() *RuntimePatchApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithManager sets the Manager field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Manager field is set to the value of the last call.
 func (b *RuntimePatchApplyConfiguration) WithManager(value string) *RuntimePatchApplyConfiguration {
-	b.Manager = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithTime sets the Time field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Time field is set to the value of the last call.
 func (b *RuntimePatchApplyConfiguration) WithTime(value v1.Time) *RuntimePatchApplyConfiguration {
-	b.Time = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithTrainingRuntimeSpec sets the TrainingRuntimeSpec field in the declarative configuration to the given value
+	// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+	// If called multiple times, the TrainingRuntimeSpec field is set to the value of the last call.
 }
 
-// WithTrainingRuntimeSpec sets the TrainingRuntimeSpec field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the TrainingRuntimeSpec field is set to the value of the last call.
 func (b *RuntimePatchApplyConfiguration) WithTrainingRuntimeSpec(value *TrainingRuntimeSpecPatchApplyConfiguration) *RuntimePatchApplyConfiguration {
-	b.TrainingRuntimeSpec = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

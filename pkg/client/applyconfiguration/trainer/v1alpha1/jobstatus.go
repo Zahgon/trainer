@@ -37,54 +37,54 @@ type JobStatusApplyConfiguration struct {
 
 // JobStatusApplyConfiguration constructs a declarative configuration of the JobStatus type for use with
 // apply.
-func JobStatus() *JobStatusApplyConfiguration {
-	return &JobStatusApplyConfiguration{}
-}
+func JobStatus() *JobStatusApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithName sets the Name field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Name field is set to the value of the last call.
 func (b *JobStatusApplyConfiguration) WithName(value string) *JobStatusApplyConfiguration {
-	b.Name = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithReady sets the Ready field in the declarative configuration to the given value
+	// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+	// If called multiple times, the Ready field is set to the value of the last call.
 }
 
-// WithReady sets the Ready field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the Ready field is set to the value of the last call.
 func (b *JobStatusApplyConfiguration) WithReady(value int32) *JobStatusApplyConfiguration {
-	b.Ready = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithSucceeded sets the Succeeded field in the declarative configuration to the given value
+	// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+	// If called multiple times, the Succeeded field is set to the value of the last call.
 }
 
-// WithSucceeded sets the Succeeded field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the Succeeded field is set to the value of the last call.
 func (b *JobStatusApplyConfiguration) WithSucceeded(value int32) *JobStatusApplyConfiguration {
-	b.Succeeded = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithFailed sets the Failed field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Failed field is set to the value of the last call.
 func (b *JobStatusApplyConfiguration) WithFailed(value int32) *JobStatusApplyConfiguration {
-	b.Failed = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithActive sets the Active field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Active field is set to the value of the last call.
 func (b *JobStatusApplyConfiguration) WithActive(value int32) *JobStatusApplyConfiguration {
-	b.Active = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithSuspended sets the Suspended field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Suspended field is set to the value of the last call.
 func (b *JobStatusApplyConfiguration) WithSuspended(value int32) *JobStatusApplyConfiguration {
-	b.Suspended = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

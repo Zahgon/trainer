@@ -36,21 +36,22 @@ type JobSetTemplatePatchApplyConfiguration struct {
 // JobSetTemplatePatchApplyConfiguration constructs a declarative configuration of the JobSetTemplatePatch type for use with
 // apply.
 func JobSetTemplatePatch() *JobSetTemplatePatchApplyConfiguration {
-	return &JobSetTemplatePatchApplyConfiguration{}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithMetadata sets the Metadata field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Metadata field is set to the value of the last call.
 func (b *JobSetTemplatePatchApplyConfiguration) WithMetadata(value *v1.ObjectMetaApplyConfiguration) *JobSetTemplatePatchApplyConfiguration {
-	b.Metadata = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithSpec sets the Spec field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Spec field is set to the value of the last call.
 func (b *JobSetTemplatePatchApplyConfiguration) WithSpec(value *JobSetSpecPatchApplyConfiguration) *JobSetTemplatePatchApplyConfiguration {
-	b.Spec = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

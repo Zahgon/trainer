@@ -42,5 +42,6 @@ type clusterTrainingRuntimeLister struct {
 
 // NewClusterTrainingRuntimeLister returns a new ClusterTrainingRuntimeLister.
 func NewClusterTrainingRuntimeLister(indexer cache.Indexer) ClusterTrainingRuntimeLister {
-	return &clusterTrainingRuntimeLister{listers.New[*trainerv1alpha1.ClusterTrainingRuntime](indexer, trainerv1alpha1.Resource("clustertrainingruntime"))}
+	_ = "STUB: not implemented"
+	return *new(ClusterTrainingRuntimeLister)
 }

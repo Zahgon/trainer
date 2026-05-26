@@ -30,20 +30,6 @@ type fakeTrainJobs struct {
 }
 
 func newFakeTrainJobs(fake *FakeTrainerV1alpha1, namespace string) typedtrainerv1alpha1.TrainJobInterface {
-	return &fakeTrainJobs{
-		gentype.NewFakeClientWithListAndApply[*v1alpha1.TrainJob, *v1alpha1.TrainJobList, *trainerv1alpha1.TrainJobApplyConfiguration](
-			fake.Fake,
-			namespace,
-			v1alpha1.SchemeGroupVersion.WithResource("trainjobs"),
-			v1alpha1.SchemeGroupVersion.WithKind("TrainJob"),
-			func() *v1alpha1.TrainJob { return &v1alpha1.TrainJob{} },
-			func() *v1alpha1.TrainJobList { return &v1alpha1.TrainJobList{} },
-			func(dst, src *v1alpha1.TrainJobList) { dst.ListMeta = src.ListMeta },
-			func(list *v1alpha1.TrainJobList) []*v1alpha1.TrainJob { return gentype.ToPointerSlice(list.Items) },
-			func(list *v1alpha1.TrainJobList, items []*v1alpha1.TrainJob) {
-				list.Items = gentype.FromPointerSlice(items)
-			},
-		),
-		fake,
-	}
+	_ = "STUB: not implemented"
+	return *new(typedtrainerv1alpha1.TrainJobInterface)
 }

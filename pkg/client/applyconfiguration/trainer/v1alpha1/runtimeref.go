@@ -35,30 +35,29 @@ type RuntimeRefApplyConfiguration struct {
 
 // RuntimeRefApplyConfiguration constructs a declarative configuration of the RuntimeRef type for use with
 // apply.
-func RuntimeRef() *RuntimeRefApplyConfiguration {
-	return &RuntimeRefApplyConfiguration{}
-}
+func RuntimeRef() *RuntimeRefApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithName sets the Name field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Name field is set to the value of the last call.
 func (b *RuntimeRefApplyConfiguration) WithName(value string) *RuntimeRefApplyConfiguration {
-	b.Name = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithAPIGroup sets the APIGroup field in the declarative configuration to the given value
+	// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+	// If called multiple times, the APIGroup field is set to the value of the last call.
 }
 
-// WithAPIGroup sets the APIGroup field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the APIGroup field is set to the value of the last call.
 func (b *RuntimeRefApplyConfiguration) WithAPIGroup(value string) *RuntimeRefApplyConfiguration {
-	b.APIGroup = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithKind sets the Kind field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Kind field is set to the value of the last call.
 func (b *RuntimeRefApplyConfiguration) WithKind(value string) *RuntimeRefApplyConfiguration {
-	b.Kind = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

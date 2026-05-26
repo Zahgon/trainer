@@ -31,14 +31,4 @@ type RuntimeRegistrar struct {
 	dependencies []string
 }
 
-func NewRuntimeRegistry() Registry {
-	return Registry{
-		TrainingRuntimeGroupKind: RuntimeRegistrar{
-			factory: NewTrainingRuntime,
-		},
-		ClusterTrainingRuntimeGroupKind: RuntimeRegistrar{
-			factory:      NewClusterTrainingRuntime,
-			dependencies: []string{TrainingRuntimeGroupKind},
-		},
-	}
-}
+func NewRuntimeRegistry() Registry { _ = "STUB: not implemented"; return *new(Registry) }

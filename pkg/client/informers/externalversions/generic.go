@@ -17,9 +17,6 @@
 package externalversions
 
 import (
-	fmt "fmt"
-
-	v1alpha1 "github.com/kubeflow/trainer/v2/pkg/apis/trainer/v1alpha1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )
@@ -38,27 +35,22 @@ type genericInformer struct {
 
 // Informer returns the SharedIndexInformer.
 func (f *genericInformer) Informer() cache.SharedIndexInformer {
-	return f.informer
+	_ = "STUB: not implemented"
+
+	// Lister returns the GenericLister.
+	return *new(cache.SharedIndexInformer)
 }
 
-// Lister returns the GenericLister.
 func (f *genericInformer) Lister() cache.GenericLister {
-	return cache.NewGenericLister(f.Informer().GetIndexer(), f.resource)
+	_ = "STUB: not implemented"
+	return *new(cache.GenericLister)
 }
 
 // ForResource gives generic access to a shared informer of the matching type
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
-	switch resource {
+	_ = "STUB: not implemented"
+
 	// Group=trainer.kubeflow.org, Version=v1alpha1
-	case v1alpha1.SchemeGroupVersion.WithResource("clustertrainingruntimes"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Trainer().V1alpha1().ClusterTrainingRuntimes().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("trainjobs"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Trainer().V1alpha1().TrainJobs().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("trainingruntimes"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Trainer().V1alpha1().TrainingRuntimes().Informer()}, nil
-
-	}
-
-	return nil, fmt.Errorf("no informer found for %v", resource)
+	return *new(GenericInformer), nil
 }

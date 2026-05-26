@@ -42,48 +42,37 @@ type ContainerPatchApplyConfiguration struct {
 
 // ContainerPatchApplyConfiguration constructs a declarative configuration of the ContainerPatch type for use with
 // apply.
-func ContainerPatch() *ContainerPatchApplyConfiguration {
-	return &ContainerPatchApplyConfiguration{}
-}
+func ContainerPatch() *ContainerPatchApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithName sets the Name field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Name field is set to the value of the last call.
 func (b *ContainerPatchApplyConfiguration) WithName(value string) *ContainerPatchApplyConfiguration {
-	b.Name = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithEnv adds the given value to the Env field in the declarative configuration
+	// and returns the receiver, so that objects can be build by chaining "With" function invocations.
+	// If called multiple times, values provided by each call will be appended to the Env field.
 }
 
-// WithEnv adds the given value to the Env field in the declarative configuration
-// and returns the receiver, so that objects can be build by chaining "With" function invocations.
-// If called multiple times, values provided by each call will be appended to the Env field.
 func (b *ContainerPatchApplyConfiguration) WithEnv(values ...*v1.EnvVarApplyConfiguration) *ContainerPatchApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithEnv")
-		}
-		b.Env = append(b.Env, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithVolumeMounts adds the given value to the VolumeMounts field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the VolumeMounts field.
 func (b *ContainerPatchApplyConfiguration) WithVolumeMounts(values ...*v1.VolumeMountApplyConfiguration) *ContainerPatchApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithVolumeMounts")
-		}
-		b.VolumeMounts = append(b.VolumeMounts, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithSecurityContext sets the SecurityContext field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the SecurityContext field is set to the value of the last call.
 func (b *ContainerPatchApplyConfiguration) WithSecurityContext(value corev1.SecurityContext) *ContainerPatchApplyConfiguration {
-	b.SecurityContext = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

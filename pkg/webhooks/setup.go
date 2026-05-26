@@ -19,19 +19,10 @@ package webhooks
 import (
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	trainer "github.com/kubeflow/trainer/v2/pkg/apis/trainer/v1alpha1"
 	"github.com/kubeflow/trainer/v2/pkg/runtime"
 )
 
 func Setup(mgr ctrl.Manager, runtimes map[string]runtime.Runtime) (string, error) {
-	if err := setupWebhookForClusterTrainingRuntime(mgr); err != nil {
-		return trainer.ClusterTrainingRuntimeKind, err
-	}
-	if err := setupWebhookForTrainingRuntime(mgr); err != nil {
-		return trainer.TrainingRuntimeKind, err
-	}
-	if err := setupWebhookForTrainJob(mgr, runtimes); err != nil {
-		return trainer.TrainJobKind, err
-	}
+	_ = "STUB: not implemented"
 	return "", nil
 }

@@ -30,22 +30,6 @@ type fakeTrainingRuntimes struct {
 }
 
 func newFakeTrainingRuntimes(fake *FakeTrainerV1alpha1, namespace string) typedtrainerv1alpha1.TrainingRuntimeInterface {
-	return &fakeTrainingRuntimes{
-		gentype.NewFakeClientWithListAndApply[*v1alpha1.TrainingRuntime, *v1alpha1.TrainingRuntimeList, *trainerv1alpha1.TrainingRuntimeApplyConfiguration](
-			fake.Fake,
-			namespace,
-			v1alpha1.SchemeGroupVersion.WithResource("trainingruntimes"),
-			v1alpha1.SchemeGroupVersion.WithKind("TrainingRuntime"),
-			func() *v1alpha1.TrainingRuntime { return &v1alpha1.TrainingRuntime{} },
-			func() *v1alpha1.TrainingRuntimeList { return &v1alpha1.TrainingRuntimeList{} },
-			func(dst, src *v1alpha1.TrainingRuntimeList) { dst.ListMeta = src.ListMeta },
-			func(list *v1alpha1.TrainingRuntimeList) []*v1alpha1.TrainingRuntime {
-				return gentype.ToPointerSlice(list.Items)
-			},
-			func(list *v1alpha1.TrainingRuntimeList, items []*v1alpha1.TrainingRuntime) {
-				list.Items = gentype.FromPointerSlice(items)
-			},
-		),
-		fake,
-	}
+	_ = "STUB: not implemented"
+	return *new(typedtrainerv1alpha1.TrainingRuntimeInterface)
 }

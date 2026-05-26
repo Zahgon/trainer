@@ -17,57 +17,25 @@ limitations under the License.
 package statusserver
 
 import (
-	"fmt"
-
-	"k8s.io/client-go/rest"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
 	configapi "github.com/kubeflow/trainer/v2/pkg/apis/config/v1alpha1"
-	"github.com/kubeflow/trainer/v2/pkg/util/cert"
 )
 
 func SetupServer(mgr ctrl.Manager, cfg *configapi.StatusServer, enableHTTP2 bool) error {
-	tlsConfig, err := cert.SetupTLSConfig(mgr, enableHTTP2)
-	if err != nil {
-		return err
-	}
-
-	// Create a separate client with its own QPS/Burst limits
-	// to avoid impacting the main reconciler's rate limits
-	cli, err := createClient(mgr, cfg)
-	if err != nil {
-		return err
-	}
-
-	// Initialize OIDC provider for token authentication
-	// The provider will be used to create verifiers with TrainJob-specific audiences
-	authorizer := NewProjectedServiceAccountTokenAuthorizer(mgr.GetConfig())
-
-	server, err := NewServer(cli, cfg, tlsConfig, authorizer)
-	if err != nil {
-		return err
-	}
-	return mgr.Add(server)
+	_ = "STUB: not implemented"
+	return nil
 }
 
+// Create a separate client with its own QPS/Burst limits
+// to avoid impacting the main reconciler's rate limits
+
+// Initialize OIDC provider for token authentication
+// The provider will be used to create verifiers with TrainJob-specific audiences
+
 func createClient(mgr ctrl.Manager, cfg *configapi.StatusServer) (client.Client, error) {
+	_ = "STUB: not implemented"
 	// Copy the manager's rest config and override rate limits
-	mgrCfg := rest.CopyConfig(mgr.GetConfig())
-	if cfg.QPS != nil {
-		mgrCfg.QPS = *cfg.QPS
-	}
-	if cfg.Burst != nil {
-		mgrCfg.Burst = int(*cfg.Burst)
-	}
-
-	cli, err := client.New(mgrCfg, client.Options{
-		Scheme: mgr.GetScheme(),
-		Mapper: mgr.GetRESTMapper(),
-	})
-	if err != nil {
-		return nil, fmt.Errorf("failed to create status server client: %w", err)
-	}
-
-	return cli, nil
+	return *new(client.Client), nil
 }

@@ -21,11 +21,7 @@ import (
 	"slices"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/google/go-cmp/cmp/cmpopts"
-	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/types"
-
-	"github.com/kubeflow/trainer/v2/pkg/constants"
 )
 
 var (
@@ -45,12 +41,4 @@ var (
 	)
 )
 
-func MPISecretDataComparer(a, b map[string][]byte) bool {
-	areKeysEqual := (a == nil || b != nil) ||
-		((len(a[constants.MPISSHPublicKey]) > 0) == (len(b[constants.MPISSHPublicKey]) > 0) &&
-			(len(a[corev1.SSHAuthPrivateKey]) > 0) == (len(b[corev1.SSHAuthPrivateKey]) > 0))
-
-	return areKeysEqual && cmp.Equal(a, b, cmpopts.IgnoreMapEntries(func(k string, _ []byte) bool {
-		return k == constants.MPISSHPublicKey || k == corev1.SSHAuthPrivateKey
-	}))
-}
+func MPISecretDataComparer(a, b map[string][]byte) bool { _ = "STUB: not implemented"; return false }

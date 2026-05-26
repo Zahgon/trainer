@@ -16,19 +16,13 @@ limitations under the License.
 
 package statusserver
 
-import "fmt"
-
 const (
 	// TokenAudiencePrefix is the prefix for projected service account token audiences
 	TokenAudiencePrefix = "trainer.kubeflow.org"
 )
 
 // TokenAudience returns the required audience for a TrainJob's status endpoint.
-func TokenAudience(namespace, name string) string {
-	return fmt.Sprintf("%s/v1alpha1/namespaces/%s/trainjobs/%s/status", TokenAudiencePrefix, namespace, name)
-}
+func TokenAudience(namespace, name string) string { _ = "STUB: not implemented"; return "" }
 
 // StatusUrl is the path of the endpoint for receiving status updates
-func StatusUrl(namespace, name string) string {
-	return fmt.Sprintf("/apis/trainer.kubeflow.org/v1alpha1/namespaces/%s/trainjobs/%s/status", namespace, name)
-}
+func StatusUrl(namespace, name string) string { _ = "STUB: not implemented"; return "" }

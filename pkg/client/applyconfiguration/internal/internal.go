@@ -17,22 +17,12 @@
 package internal
 
 import (
-	fmt "fmt"
 	sync "sync"
 
 	typed "sigs.k8s.io/structured-merge-diff/v6/typed"
 )
 
-func Parser() *typed.Parser {
-	parserOnce.Do(func() {
-		var err error
-		parser, err = typed.NewParser(schemaYAML)
-		if err != nil {
-			panic(fmt.Sprintf("Failed to parse schema: %v", err))
-		}
-	})
-	return parser
-}
+func Parser() *typed.Parser { _ = "STUB: not implemented"; return nil }
 
 var parserOnce sync.Once
 var parser *typed.Parser

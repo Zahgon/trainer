@@ -42,35 +42,28 @@ type ModelInitializerApplyConfiguration struct {
 
 // ModelInitializerApplyConfiguration constructs a declarative configuration of the ModelInitializer type for use with
 // apply.
-func ModelInitializer() *ModelInitializerApplyConfiguration {
-	return &ModelInitializerApplyConfiguration{}
-}
+func ModelInitializer() *ModelInitializerApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithStorageUri sets the StorageUri field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the StorageUri field is set to the value of the last call.
 func (b *ModelInitializerApplyConfiguration) WithStorageUri(value string) *ModelInitializerApplyConfiguration {
-	b.StorageUri = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithEnv adds the given value to the Env field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the Env field.
 func (b *ModelInitializerApplyConfiguration) WithEnv(values ...*v1.EnvVarApplyConfiguration) *ModelInitializerApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithEnv")
-		}
-		b.Env = append(b.Env, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithSecretRef sets the SecretRef field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the SecretRef field is set to the value of the last call.
 func (b *ModelInitializerApplyConfiguration) WithSecretRef(value corev1.LocalObjectReference) *ModelInitializerApplyConfiguration {
-	b.SecretRef = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

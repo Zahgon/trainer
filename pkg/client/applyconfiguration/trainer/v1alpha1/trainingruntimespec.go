@@ -32,29 +32,30 @@ type TrainingRuntimeSpecApplyConfiguration struct {
 // TrainingRuntimeSpecApplyConfiguration constructs a declarative configuration of the TrainingRuntimeSpec type for use with
 // apply.
 func TrainingRuntimeSpec() *TrainingRuntimeSpecApplyConfiguration {
-	return &TrainingRuntimeSpecApplyConfiguration{}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithMLPolicy sets the MLPolicy field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the MLPolicy field is set to the value of the last call.
 func (b *TrainingRuntimeSpecApplyConfiguration) WithMLPolicy(value *MLPolicyApplyConfiguration) *TrainingRuntimeSpecApplyConfiguration {
-	b.MLPolicy = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithPodGroupPolicy sets the PodGroupPolicy field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the PodGroupPolicy field is set to the value of the last call.
 func (b *TrainingRuntimeSpecApplyConfiguration) WithPodGroupPolicy(value *PodGroupPolicyApplyConfiguration) *TrainingRuntimeSpecApplyConfiguration {
-	b.PodGroupPolicy = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithTemplate sets the Template field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Template field is set to the value of the last call.
 func (b *TrainingRuntimeSpecApplyConfiguration) WithTemplate(value *JobSetTemplateSpecApplyConfiguration) *TrainingRuntimeSpecApplyConfiguration {
-	b.Template = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

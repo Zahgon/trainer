@@ -17,23 +17,22 @@ limitations under the License.
 package testing
 
 import (
-	"fmt"
-
-	"github.com/onsi/gomega/format"
 	"github.com/onsi/gomega/types"
-	apierrors "k8s.io/apimachinery/pkg/api/errors"
 )
 
 func BeNotFoundError() types.GomegaMatcher {
-	return BeAPIError(NotFoundError)
+	_ = "STUB: not implemented"
+	return *new(types.GomegaMatcher)
 }
 
 func BeForbiddenError() types.GomegaMatcher {
-	return BeAPIError(ForbiddenError)
+	_ = "STUB: not implemented"
+	return *new(types.GomegaMatcher)
 }
 
 func BeInvalidError() types.GomegaMatcher {
-	return BeAPIError(InvalidError)
+	_ = "STUB: not implemented"
+	return *new(types.GomegaMatcher)
 }
 
 type errorMatcher int
@@ -44,39 +43,32 @@ const (
 	InvalidError
 )
 
-func (em errorMatcher) String() string {
-	return []string{"NotFoundError", "ForbiddenError", "InvalidError"}[em]
-}
+func (em errorMatcher) String() string { _ = "STUB: not implemented"; return "" }
 
 type apiError func(error) bool
 
-func (em errorMatcher) isAPIError(err error) bool {
-	return []apiError{apierrors.IsNotFound, apierrors.IsForbidden, apierrors.IsInvalid}[em](err)
-}
+func (em errorMatcher) isAPIError(err error) bool { _ = "STUB: not implemented"; return false }
 
 type isErrorMatch struct {
 	name errorMatcher
 }
 
 func BeAPIError(name errorMatcher) types.GomegaMatcher {
-	return &isErrorMatch{
-		name: name,
-	}
+	_ = "STUB: not implemented"
+	return *new(types.GomegaMatcher)
 }
 
 func (matcher *isErrorMatch) Match(actual interface{}) (success bool, err error) {
-	err, ok := actual.(error)
-	if !ok {
-		return false, fmt.Errorf("%s expects an error", matcher.name.String())
-	}
-
-	return err != nil && matcher.name.isAPIError(err), nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 func (matcher *isErrorMatch) FailureMessage(actual interface{}) (message string) {
-	return format.Message(actual, "to be a %s", matcher.name.String())
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (matcher *isErrorMatch) NegatedFailureMessage(actual interface{}) (message string) {
-	return format.Message(actual, "not to be %s", matcher.name.String())
+	_ = "STUB: not implemented"
+	return ""
 }

@@ -17,9 +17,7 @@ limitations under the License.
 package main
 
 import (
-	"errors"
 	"flag"
-	"net/http"
 	"os"
 
 	zaplog "go.uber.org/zap"
@@ -29,8 +27,6 @@ import (
 	utilfeature "k8s.io/apiserver/pkg/util/feature"
 	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
 	ctrl "sigs.k8s.io/controller-runtime"
-	ctrlpkg "sigs.k8s.io/controller-runtime/pkg/controller"
-	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 	jobsetv1alpha2 "sigs.k8s.io/jobset/api/jobset/v1alpha2"
 	schedulerpluginsv1alpha1 "sigs.k8s.io/scheduler-plugins/apis/scheduling/v1alpha1"
@@ -39,13 +35,9 @@ import (
 	configapi "github.com/kubeflow/trainer/v2/pkg/apis/config/v1alpha1"
 	trainer "github.com/kubeflow/trainer/v2/pkg/apis/trainer/v1alpha1"
 	"github.com/kubeflow/trainer/v2/pkg/config"
-	"github.com/kubeflow/trainer/v2/pkg/controller"
-	"github.com/kubeflow/trainer/v2/pkg/features"
 	"github.com/kubeflow/trainer/v2/pkg/runtime"
 	runtimecore "github.com/kubeflow/trainer/v2/pkg/runtime/core"
-	"github.com/kubeflow/trainer/v2/pkg/statusserver"
 	"github.com/kubeflow/trainer/v2/pkg/util/cert"
-	"github.com/kubeflow/trainer/v2/pkg/webhooks"
 )
 
 const (
@@ -161,50 +153,19 @@ func main() {
 }
 
 func setupManagerComponents(mgr ctrl.Manager, runtimes map[string]runtime.Runtime, cfg *configapi.Configuration, certsReady <-chan struct{}, enableHTTP2 bool) {
-	setupLog.Info("Waiting for certificate generation to complete")
-	<-certsReady
-	setupLog.Info("Certs ready")
-
-	if failedCtrlName, err := controller.SetupControllers(mgr, runtimes, ctrlpkg.Options{}); err != nil {
-		setupLog.Error(err, "Could not create controller", "controller", failedCtrlName)
-		os.Exit(1)
-	}
-	if failedWebhook, err := webhooks.Setup(mgr, runtimes); err != nil {
-		setupLog.Error(err, "Could not create webhook", "webhook", failedWebhook)
-		os.Exit(1)
-	}
-
-	if features.Enabled(features.TrainJobStatus) {
-		if err := statusserver.SetupServer(mgr, cfg.StatusServer, enableHTTP2); err != nil {
-			setupLog.Error(err, "Could not create runtime status server")
-			os.Exit(1)
-		}
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 func setupProbeEndpoints(mgr ctrl.Manager, certsReady <-chan struct{}) {
-	defer setupLog.Info("Probe endpoints are configured on healthz and readyz")
-
-	if err := mgr.AddHealthzCheck("healthz", healthz.Ping); err != nil {
-		setupLog.Error(err, "unable to set up health check")
-		os.Exit(1)
-	}
-	// Wait for the webhook server to be listening before advertising the
-	// training-operator replica as ready. This allows users to wait with sending the first
-	// requests, requiring webhooks, until the training-operator deployment is available, so
-	// that the early requests are not rejected during the training-operator's startup.
-	// We wrap the call to GetWebhookServer in a closure to delay calling
-	// the function, otherwise a not fully-initialized webhook server (without
-	// ready certs) fails the start of the manager.
-	if err := mgr.AddReadyzCheck("readyz", func(req *http.Request) error {
-		select {
-		case <-certsReady:
-			return mgr.GetWebhookServer().StartedChecker()(req)
-		default:
-			return errors.New("certificates are not ready")
-		}
-	}); err != nil {
-		setupLog.Error(err, "unable to set up ready check")
-		os.Exit(1)
-	}
+	_ = "STUB: not implemented"
+	return
 }
+
+// Wait for the webhook server to be listening before advertising the
+// training-operator replica as ready. This allows users to wait with sending the first
+// requests, requiring webhooks, until the training-operator deployment is available, so
+// that the early requests are not rejected during the training-operator's startup.
+// We wrap the call to GetWebhookServer in a closure to delay calling
+// the function, otherwise a not fully-initialized webhook server (without
+// ready certs) fails the start of the manager.

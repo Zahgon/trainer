@@ -21,7 +21,6 @@ import (
 
 	trainerv1alpha1 "github.com/kubeflow/trainer/v2/pkg/apis/trainer/v1alpha1"
 	applyconfigurationtrainerv1alpha1 "github.com/kubeflow/trainer/v2/pkg/client/applyconfiguration/trainer/v1alpha1"
-	scheme "github.com/kubeflow/trainer/v2/pkg/client/clientset/versioned/scheme"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -55,16 +54,6 @@ type clusterTrainingRuntimes struct {
 
 // newClusterTrainingRuntimes returns a ClusterTrainingRuntimes
 func newClusterTrainingRuntimes(c *TrainerV1alpha1Client) *clusterTrainingRuntimes {
-	return &clusterTrainingRuntimes{
-		gentype.NewClientWithListAndApply[*trainerv1alpha1.ClusterTrainingRuntime, *trainerv1alpha1.ClusterTrainingRuntimeList, *applyconfigurationtrainerv1alpha1.ClusterTrainingRuntimeApplyConfiguration](
-			"clustertrainingruntimes",
-			c.RESTClient(),
-			scheme.ParameterCodec,
-			"",
-			func() *trainerv1alpha1.ClusterTrainingRuntime { return &trainerv1alpha1.ClusterTrainingRuntime{} },
-			func() *trainerv1alpha1.ClusterTrainingRuntimeList {
-				return &trainerv1alpha1.ClusterTrainingRuntimeList{}
-			},
-		),
-	}
+	_ = "STUB: not implemented"
+	return nil
 }

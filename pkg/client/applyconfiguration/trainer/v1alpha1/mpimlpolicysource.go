@@ -43,37 +43,38 @@ type MPIMLPolicySourceApplyConfiguration struct {
 // MPIMLPolicySourceApplyConfiguration constructs a declarative configuration of the MPIMLPolicySource type for use with
 // apply.
 func MPIMLPolicySource() *MPIMLPolicySourceApplyConfiguration {
-	return &MPIMLPolicySourceApplyConfiguration{}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithNumProcPerNode sets the NumProcPerNode field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the NumProcPerNode field is set to the value of the last call.
 func (b *MPIMLPolicySourceApplyConfiguration) WithNumProcPerNode(value int32) *MPIMLPolicySourceApplyConfiguration {
-	b.NumProcPerNode = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithMPIImplementation sets the MPIImplementation field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the MPIImplementation field is set to the value of the last call.
 func (b *MPIMLPolicySourceApplyConfiguration) WithMPIImplementation(value trainerv1alpha1.MPIImplementation) *MPIMLPolicySourceApplyConfiguration {
-	b.MPIImplementation = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithSSHAuthMountPath sets the SSHAuthMountPath field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the SSHAuthMountPath field is set to the value of the last call.
 func (b *MPIMLPolicySourceApplyConfiguration) WithSSHAuthMountPath(value string) *MPIMLPolicySourceApplyConfiguration {
-	b.SSHAuthMountPath = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithRunLauncherAsNode sets the RunLauncherAsNode field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the RunLauncherAsNode field is set to the value of the last call.
 func (b *MPIMLPolicySourceApplyConfiguration) WithRunLauncherAsNode(value bool) *MPIMLPolicySourceApplyConfiguration {
-	b.RunLauncherAsNode = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

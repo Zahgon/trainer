@@ -17,9 +17,6 @@
 package applyconfiguration
 
 import (
-	v1alpha1 "github.com/kubeflow/trainer/v2/pkg/apis/trainer/v1alpha1"
-	internal "github.com/kubeflow/trainer/v2/pkg/client/applyconfiguration/internal"
-	trainerv1alpha1 "github.com/kubeflow/trainer/v2/pkg/client/applyconfiguration/trainer/v1alpha1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	managedfields "k8s.io/apimachinery/pkg/util/managedfields"
@@ -28,79 +25,13 @@ import (
 // ForKind returns an apply configuration type for the given GroupVersionKind, or nil if no
 // apply configuration type exists for the given GroupVersionKind.
 func ForKind(kind schema.GroupVersionKind) interface{} {
-	switch kind {
-	// Group=trainer.kubeflow.org, Version=v1alpha1
-	case v1alpha1.SchemeGroupVersion.WithKind("ClusterTrainingRuntime"):
-		return &trainerv1alpha1.ClusterTrainingRuntimeApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("ContainerPatch"):
-		return &trainerv1alpha1.ContainerPatchApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("CoschedulingPodGroupPolicySource"):
-		return &trainerv1alpha1.CoschedulingPodGroupPolicySourceApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("DatasetInitializer"):
-		return &trainerv1alpha1.DatasetInitializerApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("FluxMLPolicySource"):
-		return &trainerv1alpha1.FluxMLPolicySourceApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("Initializer"):
-		return &trainerv1alpha1.InitializerApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("JobSetSpecPatch"):
-		return &trainerv1alpha1.JobSetSpecPatchApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("JobSetTemplatePatch"):
-		return &trainerv1alpha1.JobSetTemplatePatchApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("JobSetTemplateSpec"):
-		return &trainerv1alpha1.JobSetTemplateSpecApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("JobSpecPatch"):
-		return &trainerv1alpha1.JobSpecPatchApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("JobStatus"):
-		return &trainerv1alpha1.JobStatusApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("JobTemplatePatch"):
-		return &trainerv1alpha1.JobTemplatePatchApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("Metric"):
-		return &trainerv1alpha1.MetricApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("MLPolicy"):
-		return &trainerv1alpha1.MLPolicyApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("MLPolicySource"):
-		return &trainerv1alpha1.MLPolicySourceApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("ModelInitializer"):
-		return &trainerv1alpha1.ModelInitializerApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("MPIMLPolicySource"):
-		return &trainerv1alpha1.MPIMLPolicySourceApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("PodGroupPolicy"):
-		return &trainerv1alpha1.PodGroupPolicyApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("PodGroupPolicySource"):
-		return &trainerv1alpha1.PodGroupPolicySourceApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("PodSpecPatch"):
-		return &trainerv1alpha1.PodSpecPatchApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("PodTemplatePatch"):
-		return &trainerv1alpha1.PodTemplatePatchApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("ReplicatedJobPatch"):
-		return &trainerv1alpha1.ReplicatedJobPatchApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("RuntimePatch"):
-		return &trainerv1alpha1.RuntimePatchApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("RuntimeRef"):
-		return &trainerv1alpha1.RuntimeRefApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("Trainer"):
-		return &trainerv1alpha1.TrainerApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("TrainerStatus"):
-		return &trainerv1alpha1.TrainerStatusApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("TrainingRuntime"):
-		return &trainerv1alpha1.TrainingRuntimeApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("TrainingRuntimeSpec"):
-		return &trainerv1alpha1.TrainingRuntimeSpecApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("TrainingRuntimeSpecPatch"):
-		return &trainerv1alpha1.TrainingRuntimeSpecPatchApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("TrainJob"):
-		return &trainerv1alpha1.TrainJobApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("TrainJobSpec"):
-		return &trainerv1alpha1.TrainJobSpecApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("TrainJobStatus"):
-		return &trainerv1alpha1.TrainJobStatusApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("VolcanoPodGroupPolicySource"):
-		return &trainerv1alpha1.VolcanoPodGroupPolicySourceApplyConfiguration{}
+	_ = "STUB: not implemented"
 
-	}
+	// Group=trainer.kubeflow.org, Version=v1alpha1
 	return nil
 }
 
 func NewTypeConverter(scheme *runtime.Scheme) managedfields.TypeConverter {
-	return managedfields.NewSchemeTypeConverter(scheme, internal.Parser())
+	_ = "STUB: not implemented"
+	return *new(managedfields.TypeConverter)
 }

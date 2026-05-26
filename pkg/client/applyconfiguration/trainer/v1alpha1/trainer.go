@@ -49,71 +49,61 @@ type TrainerApplyConfiguration struct {
 
 // TrainerApplyConfiguration constructs a declarative configuration of the Trainer type for use with
 // apply.
-func Trainer() *TrainerApplyConfiguration {
-	return &TrainerApplyConfiguration{}
-}
+func Trainer() *TrainerApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithImage sets the Image field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Image field is set to the value of the last call.
 func (b *TrainerApplyConfiguration) WithImage(value string) *TrainerApplyConfiguration {
-	b.Image = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithCommand adds the given value to the Command field in the declarative configuration
+	// and returns the receiver, so that objects can be build by chaining "With" function invocations.
+	// If called multiple times, values provided by each call will be appended to the Command field.
 }
 
-// WithCommand adds the given value to the Command field in the declarative configuration
-// and returns the receiver, so that objects can be build by chaining "With" function invocations.
-// If called multiple times, values provided by each call will be appended to the Command field.
 func (b *TrainerApplyConfiguration) WithCommand(values ...string) *TrainerApplyConfiguration {
-	for i := range values {
-		b.Command = append(b.Command, values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithArgs adds the given value to the Args field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the Args field.
 func (b *TrainerApplyConfiguration) WithArgs(values ...string) *TrainerApplyConfiguration {
-	for i := range values {
-		b.Args = append(b.Args, values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithEnv adds the given value to the Env field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the Env field.
 func (b *TrainerApplyConfiguration) WithEnv(values ...*v1.EnvVarApplyConfiguration) *TrainerApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithEnv")
-		}
-		b.Env = append(b.Env, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithNumNodes sets the NumNodes field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the NumNodes field is set to the value of the last call.
 func (b *TrainerApplyConfiguration) WithNumNodes(value int32) *TrainerApplyConfiguration {
-	b.NumNodes = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithResourcesPerNode sets the ResourcesPerNode field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the ResourcesPerNode field is set to the value of the last call.
 func (b *TrainerApplyConfiguration) WithResourcesPerNode(value *v1.ResourceRequirementsApplyConfiguration) *TrainerApplyConfiguration {
-	b.ResourcesPerNode = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithNumProcPerNode sets the NumProcPerNode field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the NumProcPerNode field is set to the value of the last call.
 func (b *TrainerApplyConfiguration) WithNumProcPerNode(value int32) *TrainerApplyConfiguration {
-	b.NumProcPerNode = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

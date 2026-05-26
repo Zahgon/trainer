@@ -18,22 +18,15 @@ package trainjobstatus
 
 import (
 	"context"
-	"fmt"
 
-	corev1 "k8s.io/api/core/v1"
 	apiruntime "k8s.io/apimachinery/pkg/runtime"
 	corev1ac "k8s.io/client-go/applyconfigurations/core/v1"
-	metav1ac "k8s.io/client-go/applyconfigurations/meta/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
 	configapi "github.com/kubeflow/trainer/v2/pkg/apis/config/v1alpha1"
 	trainer "github.com/kubeflow/trainer/v2/pkg/apis/trainer/v1alpha1"
-	"github.com/kubeflow/trainer/v2/pkg/apply"
-	"github.com/kubeflow/trainer/v2/pkg/constants"
 	"github.com/kubeflow/trainer/v2/pkg/runtime"
 	"github.com/kubeflow/trainer/v2/pkg/runtime/framework"
-	"github.com/kubeflow/trainer/v2/pkg/statusserver"
-	"github.com/kubeflow/trainer/v2/pkg/util/cert"
 )
 
 const (
@@ -66,144 +59,45 @@ var _ framework.ComponentBuilderPlugin = (*Status)(nil)
 var _ framework.EnforceMLPolicyPlugin = (*Status)(nil)
 
 func New(_ context.Context, c client.Client, _ client.FieldIndexer, cfg *configapi.Configuration) (framework.Plugin, error) {
-	return &Status{client: c, cfg: cfg}, nil
+	_ = "STUB: not implemented"
+	return *new(framework.Plugin), nil
 }
 
-func (p *Status) Name() string {
-	return Name
-}
+func (p *Status) Name() string { _ = "STUB: not implemented"; return "" }
 
 func (p *Status) EnforceMLPolicy(info *runtime.Info, trainJob *trainer.TrainJob) error {
-	if info == nil || trainJob == nil {
-		return nil
-	}
-
-	envVars, err := p.createEnvVars(trainJob)
-	if err != nil {
-		return err
-	}
-	volumeMount := createTokenVolumeMount()
-	volume := createTokenVolume(trainJob)
-
-	// Inject into all trainer containers
-	trainerPS := info.FindPodSetByAncestor(constants.AncestorTrainer)
-	if trainerPS != nil {
-		for i := range trainerPS.Containers {
-			apply.UpsertEnvVars(&trainerPS.Containers[i].Env, envVars...)
-			apply.UpsertVolumeMounts(&trainerPS.Containers[i].VolumeMounts, volumeMount)
-		}
-		apply.UpsertVolumes(&trainerPS.Volumes, volume)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
+// Inject into all trainer containers
+
 func (p *Status) Build(ctx context.Context, info *runtime.Info, trainJob *trainer.TrainJob) ([]apiruntime.ApplyConfiguration, error) {
-	if info == nil || trainJob == nil {
-		return nil, nil
-	}
-
-	configMap, err := p.buildStatusServerCaCrtConfigMap(ctx, trainJob)
-	if err != nil {
-		return nil, err
-	}
-
-	return []apiruntime.ApplyConfiguration{configMap}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (p *Status) createEnvVars(trainJob *trainer.TrainJob) ([]corev1ac.EnvVarApplyConfiguration, error) {
-	if p.cfg.StatusServer.Port == nil {
-		return nil, fmt.Errorf("missing status server port")
-	}
-	// TODO: consider renaming the CertManagement.WebhookServiceName name?
-	svc := fmt.Sprintf("https://%s.%s.svc:%d", p.cfg.CertManagement.WebhookServiceName, cert.GetOperatorNamespace(), *p.cfg.StatusServer.Port)
-	path := statusserver.StatusUrl(trainJob.Namespace, trainJob.Name)
-	statusURL := svc + path
-
-	return []corev1ac.EnvVarApplyConfiguration{
-		*corev1ac.EnvVar().
-			WithName(envNameStatusURL).
-			WithValue(statusURL),
-		*corev1ac.EnvVar().
-			WithName(envNameCACert).
-			WithValue(fmt.Sprintf("%s/%s", configMountPath, caCertFileName)),
-		*corev1ac.EnvVar().
-			WithName(envNameToken).
-			WithValue(fmt.Sprintf("%s/%s", configMountPath, tokenFileName)),
-	}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
+// TODO: consider renaming the CertManagement.WebhookServiceName name?
+
 func createTokenVolumeMount() corev1ac.VolumeMountApplyConfiguration {
-	return *corev1ac.VolumeMount().
-		WithName(tokenVolumeName).
-		WithMountPath(configMountPath).
-		WithReadOnly(true)
+	_ = "STUB: not implemented"
+	return *new(corev1ac.VolumeMountApplyConfiguration)
 }
 
 func createTokenVolume(trainJob *trainer.TrainJob) corev1ac.VolumeApplyConfiguration {
-	configMapName := fmt.Sprintf("%s-tls-config", trainJob.Name)
-
-	return *corev1ac.Volume().
-		WithName(tokenVolumeName).
-		WithProjected(
-			corev1ac.ProjectedVolumeSource().
-				WithSources(
-					corev1ac.VolumeProjection().
-						WithServiceAccountToken(
-							corev1ac.ServiceAccountTokenProjection().
-								WithAudience(statusserver.TokenAudience(trainJob.Namespace, trainJob.Name)).
-								WithExpirationSeconds(tokenExpirySeconds).
-								WithPath(tokenFileName),
-						),
-					corev1ac.VolumeProjection().
-						WithConfigMap(
-							corev1ac.ConfigMapProjection().
-								WithName(configMapName).
-								WithItems(
-									corev1ac.KeyToPath().
-										WithKey(caCertKey).
-										WithPath(caCertFileName),
-								),
-						),
-				),
-		)
+	_ = "STUB: not implemented"
+	return *new(corev1ac.VolumeApplyConfiguration)
 }
 
 // buildStatusServerCaCrtConfigMap creates a ConfigMap that will copy the ca.crt from the webhook secret
 func (p *Status) buildStatusServerCaCrtConfigMap(ctx context.Context, trainJob *trainer.TrainJob) (*corev1ac.ConfigMapApplyConfiguration, error) {
-	configMapName := fmt.Sprintf("%s-tls-config", trainJob.Name)
-
-	// Get the CA cert from the webhook secret
-	secret := &corev1.Secret{}
-	secretKey := client.ObjectKey{
-		Namespace: cert.GetOperatorNamespace(),
-		Name:      p.cfg.CertManagement.WebhookSecretName,
-	}
-
-	var caCertData string
-	if err := p.client.Get(ctx, secretKey, secret); err == nil {
-		if caCert, ok := secret.Data[caCertKey]; ok && len(caCert) > 0 {
-			caCertData = string(caCert)
-		} else {
-			return nil, fmt.Errorf("failed to find status server ca.crt in tls secret")
-		}
-	} else {
-		return nil, fmt.Errorf("failed to look up status server tls secret: %w", err)
-	}
-
-	configMap := corev1ac.ConfigMap(configMapName, trainJob.Namespace).
-		WithData(map[string]string{
-			caCertKey: caCertData,
-		}).
-		WithOwnerReferences(
-			metav1ac.OwnerReference().
-				WithAPIVersion(trainer.GroupVersion.String()).
-				WithKind(trainer.TrainJobKind).
-				WithName(trainJob.Name).
-				WithUID(trainJob.UID).
-				WithController(true).
-				WithBlockOwnerDeletion(true),
-		)
-
-	return configMap, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
+// Get the CA cert from the webhook secret

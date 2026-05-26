@@ -30,21 +30,23 @@ type ReplicatedJobPatchApplyConfiguration struct {
 // ReplicatedJobPatchApplyConfiguration constructs a declarative configuration of the ReplicatedJobPatch type for use with
 // apply.
 func ReplicatedJobPatch() *ReplicatedJobPatchApplyConfiguration {
-	return &ReplicatedJobPatchApplyConfiguration{}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithName sets the Name field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Name field is set to the value of the last call.
 func (b *ReplicatedJobPatchApplyConfiguration) WithName(value string) *ReplicatedJobPatchApplyConfiguration {
-	b.Name = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithTemplate sets the Template field in the declarative configuration to the given value
+	// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+	// If called multiple times, the Template field is set to the value of the last call.
 }
 
-// WithTemplate sets the Template field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the Template field is set to the value of the last call.
 func (b *ReplicatedJobPatchApplyConfiguration) WithTemplate(value *JobTemplatePatchApplyConfiguration) *ReplicatedJobPatchApplyConfiguration {
-	b.Template = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

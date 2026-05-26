@@ -30,22 +30,20 @@ type InitializerApplyConfiguration struct {
 
 // InitializerApplyConfiguration constructs a declarative configuration of the Initializer type for use with
 // apply.
-func Initializer() *InitializerApplyConfiguration {
-	return &InitializerApplyConfiguration{}
-}
+func Initializer() *InitializerApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithDataset sets the Dataset field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Dataset field is set to the value of the last call.
 func (b *InitializerApplyConfiguration) WithDataset(value *DatasetInitializerApplyConfiguration) *InitializerApplyConfiguration {
-	b.Dataset = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithModel sets the Model field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Model field is set to the value of the last call.
 func (b *InitializerApplyConfiguration) WithModel(value *ModelInitializerApplyConfiguration) *InitializerApplyConfiguration {
-	b.Model = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

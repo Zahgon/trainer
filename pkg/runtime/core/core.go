@@ -18,7 +18,6 @@ package core
 
 import (
 	"context"
-	"fmt"
 
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
@@ -32,36 +31,8 @@ import (
 var runtimes map[string]runtime.Runtime
 
 func New(ctx context.Context, client client.Client, indexer client.FieldIndexer, cfg *configapi.Configuration) (map[string]runtime.Runtime, error) {
-	registry := NewRuntimeRegistry()
-	newRuntimes := make(map[string]runtime.Runtime, len(registry))
-	for name, registrar := range registry {
-		for _, dep := range registrar.dependencies {
-			depRegistrar, depExist := registry[dep]
-			_, depRegistered := newRuntimes[dep]
-			if depExist && !depRegistered {
-				r, err := depRegistrar.factory(ctx, client, indexer, cfg)
-				if err != nil {
-					return nil, fmt.Errorf("initializing runtime %q on which %q depends: %w", dep, name, err)
-				}
-				newRuntimes[dep] = r
-			}
-		}
-		if _, ok := newRuntimes[name]; !ok {
-			r, err := registrar.factory(ctx, client, indexer, cfg)
-			if err != nil {
-				return nil, fmt.Errorf("initializing runtime %q: %w", name, err)
-			}
-			newRuntimes[name] = r
-		}
-	}
-	runtimes = newRuntimes
-	return newRuntimes, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func Runtimes() map[string]runtime.Runtime {
-	runtimesCopy := make(map[string]runtime.Runtime, len(runtimes))
-	for d, r := range runtimes {
-		runtimesCopy[d] = r
-	}
-	return runtimesCopy
-}
+func Runtimes() map[string]runtime.Runtime { _ = "STUB: not implemented"; return nil }

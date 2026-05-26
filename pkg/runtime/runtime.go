@@ -18,19 +18,11 @@ package runtime
 
 import (
 	"iter"
-	"maps"
-	"slices"
-	"strings"
 
 	corev1 "k8s.io/api/core/v1"
-	"k8s.io/apimachinery/pkg/runtime/schema"
 	corev1ac "k8s.io/client-go/applyconfigurations/core/v1"
-	resourcehelpers "k8s.io/component-helpers/resource"
-	"k8s.io/utils/ptr"
-	jobsetv1alpha2ac "sigs.k8s.io/jobset/client-go/applyconfiguration/jobset/v1alpha2"
 
 	trainer "github.com/kubeflow/trainer/v2/pkg/apis/trainer/v1alpha1"
-	"github.com/kubeflow/trainer/v2/pkg/constants"
 )
 
 type Info struct {
@@ -104,35 +96,28 @@ type InfoOption func(options *InfoOptions)
 var defaultOptions = InfoOptions{}
 
 func WithLabels(labels map[string]string) InfoOption {
-	return func(o *InfoOptions) {
-		o.labels = maps.Clone(labels)
-	}
+	_ = "STUB: not implemented"
+	return *new(InfoOption)
 }
 
 func WithAnnotations(annotations map[string]string) InfoOption {
-	return func(o *InfoOptions) {
-		o.annotations = maps.Clone(annotations)
-	}
+	_ = "STUB: not implemented"
+	return *new(InfoOption)
 }
 
 func WithMLPolicySource(mlPolicy *trainer.MLPolicy) InfoOption {
-	return func(o *InfoOptions) {
-		if mlPolicy != nil {
-			o.runtimePolicy.MLPolicySource = &mlPolicy.MLPolicySource
-		}
-	}
+	_ = "STUB: not implemented"
+	return *new(InfoOption)
 }
 
 func WithPodGroupPolicy(pgPolicy *trainer.PodGroupPolicy) InfoOption {
-	return func(o *InfoOptions) {
-		o.runtimePolicy.PodGroupPolicy = pgPolicy
-	}
+	_ = "STUB: not implemented"
+	return *new(InfoOption)
 }
 
 func WithTemplateSpecObjApply(objApply any) InfoOption {
-	return func(o *InfoOptions) {
-		o.templateSpec.ObjApply = objApply
-	}
+	_ = "STUB: not implemented"
+	return *new(InfoOption)
 }
 
 // WithPodSet construct Info.TemplateSpec.PodSet from PodSpec.
@@ -140,141 +125,41 @@ func WithTemplateSpecObjApply(objApply any) InfoOption {
 func WithPodSet(
 	psName string, ancestor *string, count int32, typedPodSpec corev1.PodSpec, podSpecApply *corev1ac.PodSpecApplyConfiguration,
 ) InfoOption {
-	return func(o *InfoOptions) {
-		ps := PodSet{
-			Name:              psName,
-			Ancestor:          ancestor,
-			Count:             ptr.To(max(count, 1)),
-			Volumes:           podSpecApply.Volumes,
-			SinglePodRequests: resourcehelpers.PodRequests(&corev1.Pod{Spec: typedPodSpec}, resourcehelpers.PodResourcesOptions{}),
-			InitContainers:    slices.Collect(toPodSetContainer(podSpecApply.InitContainers...)),
-			Containers:        slices.Collect(toPodSetContainer(podSpecApply.Containers...)),
-		}
-		o.templateSpec.PodSets = append(o.templateSpec.PodSets, ps)
-	}
+	_ = "STUB: not implemented"
+	return *new(InfoOption)
 }
 
 func toPodSetContainer(containerApply ...corev1ac.ContainerApplyConfiguration) iter.Seq[Container] {
-	return func(yield func(Container) bool) {
-		for _, cApply := range containerApply {
-			container := Container{
-				Name:         ptr.Deref(cApply.Name, ""),
-				Env:          cApply.Env,
-				Ports:        cApply.Ports,
-				VolumeMounts: cApply.VolumeMounts,
-			}
-			if !yield(container) {
-				return
-			}
-		}
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func NewInfo(opts ...InfoOption) *Info {
-	options := defaultOptions
-	for _, opt := range opts {
-		opt(&options)
-	}
+func NewInfo(opts ...InfoOption) *Info { _ = "STUB: not implemented"; return nil }
 
-	info := &Info{
-		Labels:        make(map[string]string),
-		Annotations:   make(map[string]string),
-		RuntimePolicy: options.runtimePolicy,
-		Scheduler: &Scheduler{
-			PodLabels: make(map[string]string),
-		},
-		TemplateSpec: options.templateSpec,
-	}
-	if options.labels != nil {
-		info.Labels = options.labels
-	}
-	if options.annotations != nil {
-		info.Annotations = options.annotations
-	}
-	return info
-}
-
-func TemplateSpecApply[A any](info *Info) (*A, bool) {
-	spec, ok := info.TemplateSpec.ObjApply.(*A)
-	return spec, ok
-}
+func TemplateSpecApply[A any](info *Info) (*A, bool) { _ = "STUB: not implemented"; return nil, false }
 
 // FindContainerByPodSetAncestorContainerName finds runtime.Container from Info.TemplateSpec.PodSet by PodSet Ancestor and Container name.
 func (i *Info) FindContainerByPodSetAncestorContainerName(psAncestor, containerName string) *Container {
-	ps := i.FindPodSetByAncestor(psAncestor)
-	if ps == nil {
-		return nil
-	}
-	if idx := slices.IndexFunc(ps.Containers, func(c Container) bool { return c.Name == containerName }); idx != -1 {
-		return &ps.Containers[idx]
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (i *Info) FindPodSetByAncestor(ancestor string) *PodSet {
-	if idx := slices.IndexFunc(i.TemplateSpec.PodSets, func(ps PodSet) bool { return ptr.Equal(ps.Ancestor, &ancestor) }); idx != -1 {
-		return &i.TemplateSpec.PodSets[idx]
-	}
-	return nil
-}
+func (i *Info) FindPodSetByAncestor(ancestor string) *PodSet { _ = "STUB: not implemented"; return nil }
 
-func (i *Info) FindPodSetByName(psName string) *PodSet {
-	if idx := slices.IndexFunc(i.TemplateSpec.PodSets, func(ps PodSet) bool { return ps.Name == psName }); idx != -1 {
-		return &i.TemplateSpec.PodSets[idx]
-	}
-	return nil
-}
+func (i *Info) FindPodSetByName(psName string) *PodSet { _ = "STUB: not implemented"; return nil }
 
 func RuntimeRefToRuntimeRegistryKey(runtimeRef trainer.RuntimeRef) string {
-	return schema.GroupKind{
-		Group: ptr.Deref(runtimeRef.APIGroup, ""),
-		Kind:  ptr.Deref(runtimeRef.Kind, ""),
-	}.String()
+	_ = "STUB: not implemented"
+	return ""
 }
 
 // ExtractResourcePerNodeFromRuntime extracts the Trainer resource per node from the Info object.
 func ExtractResourcePerNodeFromRuntime(info *Info) *corev1.ResourceRequirements {
-	if jobSetSpec, ok := TemplateSpecApply[jobsetv1alpha2ac.JobSetSpecApplyConfiguration](info); ok {
-		for _, rJob := range jobSetSpec.ReplicatedJobs {
-			if rJob.Name != nil && *rJob.Name == constants.Node || rJob.Template.Labels[constants.LabelTrainJobAncestor] == constants.AncestorTrainer {
-				for _, container := range rJob.Template.Spec.Template.Spec.Containers {
-					if container.Name != nil && *container.Name == constants.Node && container.Resources != nil {
-						res := &corev1.ResourceRequirements{
-							Limits:   corev1.ResourceList{},
-							Requests: corev1.ResourceList{},
-						}
-						if container.Resources.Limits != nil {
-							res.Limits = *container.Resources.Limits
-						}
-						if container.Resources.Requests != nil {
-							res.Requests = *container.Resources.Requests
-						}
-						return res
-					}
-				}
-			}
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // GetNumGPUPerNode returns the GPU count if found in container resources.
-func GetNumGPUPerNode(res *corev1.ResourceRequirements) int {
-	if res == nil {
-		return 0
-	}
-	gpuQ := numGPU(res.Requests)
-	if limitGpuQ := numGPU(res.Limits); gpuQ == 0 && limitGpuQ > 0 {
-		gpuQ = limitGpuQ
-	}
-	return gpuQ
-}
+func GetNumGPUPerNode(res *corev1.ResourceRequirements) int { _ = "STUB: not implemented"; return 0 }
 
-func numGPU(resourcePerNode corev1.ResourceList) int {
-	for resName, resQ := range resourcePerNode {
-		if strings.Contains(strings.ToLower(resName.String()), "gpu") {
-			return int(resQ.Value())
-		}
-	}
-	return 0
-}
+func numGPU(resourcePerNode corev1.ResourceList) int { _ = "STUB: not implemented"; return 0 }

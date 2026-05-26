@@ -28,13 +28,14 @@ type FluxMLPolicySourceApplyConfiguration struct {
 // FluxMLPolicySourceApplyConfiguration constructs a declarative configuration of the FluxMLPolicySource type for use with
 // apply.
 func FluxMLPolicySource() *FluxMLPolicySourceApplyConfiguration {
-	return &FluxMLPolicySourceApplyConfiguration{}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithNumProcPerNode sets the NumProcPerNode field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the NumProcPerNode field is set to the value of the last call.
 func (b *FluxMLPolicySourceApplyConfiguration) WithNumProcPerNode(value int32) *FluxMLPolicySourceApplyConfiguration {
-	b.NumProcPerNode = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

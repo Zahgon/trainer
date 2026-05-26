@@ -40,43 +40,36 @@ type TrainerStatusApplyConfiguration struct {
 
 // TrainerStatusApplyConfiguration constructs a declarative configuration of the TrainerStatus type for use with
 // apply.
-func TrainerStatus() *TrainerStatusApplyConfiguration {
-	return &TrainerStatusApplyConfiguration{}
-}
+func TrainerStatus() *TrainerStatusApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithProgressPercentage sets the ProgressPercentage field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the ProgressPercentage field is set to the value of the last call.
 func (b *TrainerStatusApplyConfiguration) WithProgressPercentage(value int32) *TrainerStatusApplyConfiguration {
-	b.ProgressPercentage = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithEstimatedRemainingSeconds sets the EstimatedRemainingSeconds field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the EstimatedRemainingSeconds field is set to the value of the last call.
 func (b *TrainerStatusApplyConfiguration) WithEstimatedRemainingSeconds(value int32) *TrainerStatusApplyConfiguration {
-	b.EstimatedRemainingSeconds = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithMetrics adds the given value to the Metrics field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the Metrics field.
 func (b *TrainerStatusApplyConfiguration) WithMetrics(values ...*MetricApplyConfiguration) *TrainerStatusApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithMetrics")
-		}
-		b.Metrics = append(b.Metrics, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithLastUpdatedTime sets the LastUpdatedTime field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the LastUpdatedTime field is set to the value of the last call.
 func (b *TrainerStatusApplyConfiguration) WithLastUpdatedTime(value v1.Time) *TrainerStatusApplyConfiguration {
-	b.LastUpdatedTime = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

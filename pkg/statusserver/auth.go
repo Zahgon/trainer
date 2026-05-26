@@ -18,11 +18,6 @@ package statusserver
 
 import (
 	"context"
-	"encoding/base64"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strings"
 
 	"github.com/coreos/go-oidc/v3/oidc"
 	"k8s.io/client-go/rest"
@@ -52,103 +47,32 @@ type projectedToken struct {
 // NewProjectedServiceAccountTokenAuthorizer creates a validator for checking a bearer token has permission to
 // update the requested train job.
 func NewProjectedServiceAccountTokenAuthorizer(config *rest.Config) TokenAuthorizer {
-	return &projectedServiceAccountTokenAuthorizer{
-		config: config,
-	}
+	_ = "STUB: not implemented"
+	return *new(TokenAuthorizer)
 }
 
 func (p *projectedServiceAccountTokenAuthorizer) Init(ctx context.Context) error {
-	issuerURL, err := getClusterOIDCIssuerURL()
-	if err != nil {
-		return fmt.Errorf("failed to discover issuer URL: %w", err)
-	}
-
-	// Create an authenticated HTTP client using the provided rest config
-	httpClient, err := rest.HTTPClientFor(p.config)
-	if err != nil {
-		return fmt.Errorf("failed to create HTTP client: %w", err)
-	}
-
-	// Create context with the authenticated HTTP client
-	ctx = oidc.ClientContext(ctx, httpClient)
-
-	provider, err := oidc.NewProvider(ctx, issuerURL)
-	if err != nil {
-		return fmt.Errorf("failed to create OIDC provider: %w", err)
-	}
-	p.oidcProvider = provider
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
+// Create an authenticated HTTP client using the provided rest config
+
+// Create context with the authenticated HTTP client
+
 func (p *projectedServiceAccountTokenAuthorizer) Authorize(ctx context.Context, authHeader, namespace, trainJobName string) (bool, error) {
-	if p.oidcProvider == nil {
-		return false, fmt.Errorf("OIDC provider has not been initialized")
-	}
-
-	rawToken := extractRawToken(authHeader)
-
-	// Create authorizer with TrainJob-specific audience
-	expectedAudience := TokenAudience(namespace, trainJobName)
-	verifier := p.oidcProvider.Verifier(&oidc.Config{
-		ClientID: expectedAudience,
-	})
-
-	// Check token signature, expiry, and audience
-	idToken, err := verifier.Verify(ctx, rawToken)
-	if err != nil {
-		return false, nil
-	}
-
-	// Check token is bound to a pod in the same namespace as the train job
-	parsedToken := projectedToken{}
-	err = idToken.Claims(&parsedToken)
-	if err != nil {
-		return false, nil
-	}
-	if parsedToken.Kubernetes.Namespace != namespace {
-		return false, nil
-	}
-
-	return true, nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
-func extractRawToken(authHeader string) string {
-	parts := strings.Split(authHeader, " ")
+// Create authorizer with TrainJob-specific audience
 
-	if len(parts) != 2 || parts[0] != "Bearer" {
-		return ""
-	}
+// Check token signature, expiry, and audience
 
-	return parts[1]
-}
+// Check token is bound to a pod in the same namespace as the train job
+
+func extractRawToken(authHeader string) string { _ = "STUB: not implemented"; return "" }
 
 // getClusterOIDCIssuerURL tries to look up the cluster token issuer from the in-cluster service account token
 // Different clusters may use different issuers. This is a reliable way of discovering the issuer.
-func getClusterOIDCIssuerURL() (string, error) {
-	tokenBytes, err := os.ReadFile("/var/run/secrets/kubernetes.io/serviceaccount/token")
-	if err != nil {
-		return "", err
-	}
-
-	parts := strings.Split(strings.TrimSpace(string(tokenBytes)), ".")
-	if len(parts) != 3 {
-		return "", fmt.Errorf("serviceaccount token is not a jwt")
-	}
-
-	payload, err := base64.RawURLEncoding.DecodeString(parts[1])
-	if err != nil {
-		return "", fmt.Errorf("serviceaccount token is not a jwt: %w", err)
-	}
-
-	var token projectedToken
-	if err := json.Unmarshal(payload, &token); err != nil {
-		return "", fmt.Errorf("serviceaccount token is not a jwt: %w", err)
-	}
-
-	if token.Issuer == "" {
-		return "", fmt.Errorf("serviceaccount token missing issuer claim")
-	}
-
-	return token.Issuer, nil
-}
+func getClusterOIDCIssuerURL() (string, error) { _ = "STUB: not implemented"; return "", nil }

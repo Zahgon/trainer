@@ -41,12 +41,14 @@ type trainingRuntimeLister struct {
 
 // NewTrainingRuntimeLister returns a new TrainingRuntimeLister.
 func NewTrainingRuntimeLister(indexer cache.Indexer) TrainingRuntimeLister {
-	return &trainingRuntimeLister{listers.New[*trainerv1alpha1.TrainingRuntime](indexer, trainerv1alpha1.Resource("trainingruntime"))}
+	_ = "STUB: not implemented"
+	return *new(TrainingRuntimeLister)
 }
 
 // TrainingRuntimes returns an object that can list and get TrainingRuntimes.
 func (s *trainingRuntimeLister) TrainingRuntimes(namespace string) TrainingRuntimeNamespaceLister {
-	return trainingRuntimeNamespaceLister{listers.NewNamespaced[*trainerv1alpha1.TrainingRuntime](s.ResourceIndexer, namespace)}
+	_ = "STUB: not implemented"
+	return *new(TrainingRuntimeNamespaceLister)
 }
 
 // TrainingRuntimeNamespaceLister helps list and get TrainingRuntimes.

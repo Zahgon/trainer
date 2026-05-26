@@ -88,11 +88,4 @@ func main() {
 	fmt.Println(string(jsonBytes))
 }
 
-func swaggify(name string) string {
-	name = strings.ReplaceAll(name, "github.com/kubeflow/trainer/v2/pkg/apis/", "")
-	name = strings.ReplaceAll(name, "sigs.k8s.io/jobset/api/", "")
-	name = strings.ReplaceAll(name, "volcano.sh/apis/pkg/apis/", "")
-	name = strings.ReplaceAll(name, "k8s.io", "io.k8s")
-	name = strings.ReplaceAll(name, "/", ".")
-	return name
-}
+func swaggify(name string) string { _ = "STUB: not implemented"; return "" }

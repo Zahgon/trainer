@@ -27,22 +27,21 @@ type MetricApplyConfiguration struct {
 
 // MetricApplyConfiguration constructs a declarative configuration of the Metric type for use with
 // apply.
-func Metric() *MetricApplyConfiguration {
-	return &MetricApplyConfiguration{}
-}
+func Metric() *MetricApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithName sets the Name field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Name field is set to the value of the last call.
 func (b *MetricApplyConfiguration) WithName(value string) *MetricApplyConfiguration {
-	b.Name = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithValue sets the Value field in the declarative configuration to the given value
+	// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+	// If called multiple times, the Value field is set to the value of the last call.
 }
 
-// WithValue sets the Value field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the Value field is set to the value of the last call.
 func (b *MetricApplyConfiguration) WithValue(value string) *MetricApplyConfiguration {
-	b.Value = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

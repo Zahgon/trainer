@@ -26,11 +26,6 @@ import (
 // RegisterDefaults adds defaulters functions to the given scheme.
 // Public to allow building arbitrary schemes.
 // All generated defaulters are covering - they call all nested defaulters.
-func RegisterDefaults(scheme *runtime.Scheme) error {
-	scheme.AddTypeDefaultingFunc(&Configuration{}, func(obj interface{}) { SetObjectDefaults_Configuration(obj.(*Configuration)) })
-	return nil
-}
+func RegisterDefaults(scheme *runtime.Scheme) error { _ = "STUB: not implemented"; return nil }
 
-func SetObjectDefaults_Configuration(in *Configuration) {
-	SetDefaults_Configuration(in)
-}
+func SetObjectDefaults_Configuration(in *Configuration) { _ = "STUB: not implemented"; return }

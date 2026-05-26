@@ -34,22 +34,20 @@ type PodTemplatePatchApplyConfiguration struct {
 
 // PodTemplatePatchApplyConfiguration constructs a declarative configuration of the PodTemplatePatch type for use with
 // apply.
-func PodTemplatePatch() *PodTemplatePatchApplyConfiguration {
-	return &PodTemplatePatchApplyConfiguration{}
-}
+func PodTemplatePatch() *PodTemplatePatchApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithMetadata sets the Metadata field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Metadata field is set to the value of the last call.
 func (b *PodTemplatePatchApplyConfiguration) WithMetadata(value *v1.ObjectMetaApplyConfiguration) *PodTemplatePatchApplyConfiguration {
-	b.Metadata = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithSpec sets the Spec field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Spec field is set to the value of the last call.
 func (b *PodTemplatePatchApplyConfiguration) WithSpec(value *PodSpecPatchApplyConfiguration) *PodTemplatePatchApplyConfiguration {
-	b.Spec = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

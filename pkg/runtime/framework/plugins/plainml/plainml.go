@@ -23,8 +23,6 @@ import (
 
 	configapi "github.com/kubeflow/trainer/v2/pkg/apis/config/v1alpha1"
 	trainer "github.com/kubeflow/trainer/v2/pkg/apis/trainer/v1alpha1"
-	"github.com/kubeflow/trainer/v2/pkg/apply"
-	"github.com/kubeflow/trainer/v2/pkg/constants"
 	"github.com/kubeflow/trainer/v2/pkg/runtime"
 	"github.com/kubeflow/trainer/v2/pkg/runtime/framework"
 )
@@ -36,36 +34,17 @@ type PlainML struct{}
 const Name = "PlainML"
 
 func New(context.Context, client.Client, client.FieldIndexer, *configapi.Configuration) (framework.Plugin, error) {
-	return &PlainML{}, nil
+	_ = "STUB: not implemented"
+	return *new(framework.Plugin), nil
 }
 
-func (p *PlainML) Name() string {
-	return Name
-}
+func (p *PlainML) Name() string { _ = "STUB: not implemented"; return "" }
 
 func (p *PlainML) EnforceMLPolicy(info *runtime.Info, trainJob *trainer.TrainJob) error {
-	if info == nil ||
-		(info.RuntimePolicy.MLPolicySource != nil &&
-			(info.RuntimePolicy.MLPolicySource.Torch != nil ||
-				info.RuntimePolicy.MLPolicySource.MPI != nil ||
-				info.RuntimePolicy.MLPolicySource.JAX != nil)) {
-		return nil
-	}
-
-	// TrainJob contains the actual information for the number of nodes.
-	if trainJob.Spec.Trainer != nil && trainJob.Spec.Trainer.NumNodes != nil {
-		if trainerPS := info.FindPodSetByAncestor(constants.AncestorTrainer); trainerPS != nil && trainerPS.Count != nil {
-			*trainerPS.Count = *trainJob.Spec.Trainer.NumNodes
-		}
-	}
-
-	// Add envs from the TrainJob.
-	var trainerContainer *runtime.Container
-	if trainJob.Spec.Trainer != nil {
-		if trainerContainer = info.FindContainerByPodSetAncestorContainerName(constants.AncestorTrainer, constants.Node); trainerContainer != nil {
-			apply.UpsertEnvVars(&trainerContainer.Env, apply.EnvVars(trainJob.Spec.Trainer.Env...)...)
-		}
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// TrainJob contains the actual information for the number of nodes.
+
+// Add envs from the TrainJob.

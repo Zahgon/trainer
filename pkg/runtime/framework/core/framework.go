@@ -30,7 +30,6 @@ import (
 	"github.com/kubeflow/trainer/v2/pkg/runtime"
 	"github.com/kubeflow/trainer/v2/pkg/runtime/framework"
 	fwkplugins "github.com/kubeflow/trainer/v2/pkg/runtime/framework/plugins"
-	index "github.com/kubeflow/trainer/v2/pkg/runtime/indexer"
 )
 
 var errorTooManyTrainJobStatusPlugin = errors.New("too many TrainJobStatus plugins are registered")
@@ -48,124 +47,46 @@ type Framework struct {
 }
 
 func New(ctx context.Context, c client.Client, r fwkplugins.Registry, indexer client.FieldIndexer, cfg *configapi.Configuration) (*Framework, error) {
-	f := &Framework{
-		registry: r,
-	}
-	plugins := make(map[string]framework.Plugin, len(r))
-	if err := f.SetupRuntimeClassIndexer(ctx, indexer); err != nil {
-		return nil, err
-	}
-
-	for name, factory := range r {
-		plugin, err := factory(ctx, c, indexer, cfg)
-		if err != nil {
-			return nil, err
-		}
-		plugins[name] = plugin
-		if p, ok := plugin.(framework.EnforceMLPolicyPlugin); ok {
-			f.enforceMLPlugins = append(f.enforceMLPlugins, p)
-		}
-		if p, ok := plugin.(framework.EnforcePodGroupPolicyPlugin); ok {
-			f.enforcePodGroupPolicyPlugins = append(f.enforcePodGroupPolicyPlugins, p)
-		}
-		if p, ok := plugin.(framework.CustomValidationPlugin); ok {
-			f.customValidationPlugins = append(f.customValidationPlugins, p)
-		}
-		if p, ok := plugin.(framework.WatchExtensionPlugin); ok {
-			f.watchExtensionPlugins = append(f.watchExtensionPlugins, p)
-		}
-		if p, ok := plugin.(framework.PodNetworkPlugin); ok {
-			f.podNetworkPlugins = append(f.podNetworkPlugins, p)
-		}
-		if p, ok := plugin.(framework.ComponentBuilderPlugin); ok {
-			f.componentBuilderPlugins = append(f.componentBuilderPlugins, p)
-		}
-		if p, ok := plugin.(framework.TrainJobStatusPlugin); ok {
-			if f.trainJobStatusPlugin != nil {
-				return nil, errorTooManyTrainJobStatusPlugin
-			}
-			f.trainJobStatusPlugin = p
-		}
-	}
-	f.plugins = plugins
-	return f, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (f *Framework) RunEnforceMLPolicyPlugins(info *runtime.Info, trainJob *trainer.TrainJob) error {
-	for _, plugin := range f.enforceMLPlugins {
-		if err := plugin.EnforceMLPolicy(info, trainJob); err != nil {
-			return err
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (f *Framework) RunEnforcePodGroupPolicyPlugins(info *runtime.Info, trainJob *trainer.TrainJob) error {
-	for _, plugin := range f.enforcePodGroupPolicyPlugins {
-		if err := plugin.EnforcePodGroupPolicy(info, trainJob); err != nil {
-			return err
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (f *Framework) RunCustomValidationPlugins(ctx context.Context, info *runtime.Info, oldObj, newObj *trainer.TrainJob) (admission.Warnings, field.ErrorList) {
-	var aggregatedWarnings admission.Warnings
-	var aggregatedErrors field.ErrorList
-	for _, plugin := range f.customValidationPlugins {
-		warnings, errs := plugin.Validate(ctx, info, oldObj, newObj)
-		if len(warnings) != 0 {
-			aggregatedWarnings = append(aggregatedWarnings, warnings...)
-		}
-		if errs != nil {
-			aggregatedErrors = append(aggregatedErrors, errs...)
-		}
-	}
-	return aggregatedWarnings, aggregatedErrors
+	_ = "STUB: not implemented"
+	return *new(admission.Warnings), *new(field.ErrorList)
 }
 
 func (f *Framework) RunPodNetworkPlugins(info *runtime.Info, trainJob *trainer.TrainJob) error {
-	for _, plugin := range f.podNetworkPlugins {
-		if err := plugin.IdentifyPodNetwork(info, trainJob); err != nil {
-			return err
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (f *Framework) RunComponentBuilderPlugins(ctx context.Context, info *runtime.Info, trainJob *trainer.TrainJob) ([]apiruntime.ApplyConfiguration, error) {
-	var objs []apiruntime.ApplyConfiguration
-	for _, plugin := range f.componentBuilderPlugins {
-		components, err := plugin.Build(ctx, info, trainJob)
-		if err != nil {
-			return nil, err
-		}
-		objs = append(objs, components...)
-	}
-	return objs, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (f *Framework) RunTrainJobStatusPlugin(ctx context.Context, trainJob *trainer.TrainJob) (*trainer.TrainJobStatus, error) {
-	if f.trainJobStatusPlugin != nil {
-		return f.trainJobStatusPlugin.Status(ctx, trainJob)
-	}
+	_ = "STUB: not implemented"
 	return nil, nil
 }
 
 func (f *Framework) WatchExtensionPlugins() []framework.WatchExtensionPlugin {
-	return f.watchExtensionPlugins
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (f *Framework) SetupRuntimeClassIndexer(ctx context.Context, indexer client.FieldIndexer) error {
-	if err := indexer.IndexField(ctx, &trainer.TrainingRuntime{},
-		index.TrainingRuntimeContainerRuntimeClassKey,
-		index.IndexTrainingRuntimeContainerRuntimeClass); err != nil {
-		return index.ErrorCanNotSetupTrainingRuntimeRuntimeClassIndexer
-	}
-	if err := indexer.IndexField(ctx, &trainer.ClusterTrainingRuntime{},
-		index.ClusterTrainingRuntimeContainerRuntimeClassKey,
-		index.IndexClusterTrainingRuntimeContainerRuntimeClass); err != nil {
-		return index.ErrorCanNotSetupClusterTrainingRuntimeRuntimeClassIndexer
-	}
+	_ = "STUB: not implemented"
 	return nil
 }

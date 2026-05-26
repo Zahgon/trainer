@@ -20,7 +20,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )
@@ -39,20 +38,10 @@ var (
 	AddToScheme = SchemeBuilder.AddToScheme
 )
 
-func addKnownTypes(scheme *runtime.Scheme) error {
-	scheme.AddKnownTypes(GroupVersion,
-		&TrainJob{},
-		&TrainJobList{},
-		&ClusterTrainingRuntime{},
-		&ClusterTrainingRuntimeList{},
-		&TrainingRuntime{},
-		&TrainingRuntimeList{},
-	)
-	metav1.AddToGroupVersion(scheme, GroupVersion)
-	return nil
-}
+func addKnownTypes(scheme *runtime.Scheme) error { _ = "STUB: not implemented"; return nil }
 
 // Resource takes an unqualified resource and returns a Group-qualified GroupResource.
 func Resource(resource string) schema.GroupResource {
-	return GroupVersion.WithResource(resource).GroupResource()
+	_ = "STUB: not implemented"
+	return *new(schema.GroupResource)
 }

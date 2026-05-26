@@ -27,22 +27,20 @@ type PodGroupPolicyApplyConfiguration struct {
 
 // PodGroupPolicyApplyConfiguration constructs a declarative configuration of the PodGroupPolicy type for use with
 // apply.
-func PodGroupPolicy() *PodGroupPolicyApplyConfiguration {
-	return &PodGroupPolicyApplyConfiguration{}
-}
+func PodGroupPolicy() *PodGroupPolicyApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithCoscheduling sets the Coscheduling field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Coscheduling field is set to the value of the last call.
 func (b *PodGroupPolicyApplyConfiguration) WithCoscheduling(value *CoschedulingPodGroupPolicySourceApplyConfiguration) *PodGroupPolicyApplyConfiguration {
-	b.PodGroupPolicySourceApplyConfiguration.Coscheduling = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithVolcano sets the Volcano field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Volcano field is set to the value of the last call.
 func (b *PodGroupPolicyApplyConfiguration) WithVolcano(value *VolcanoPodGroupPolicySourceApplyConfiguration) *PodGroupPolicyApplyConfiguration {
-	b.PodGroupPolicySourceApplyConfiguration.Volcano = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

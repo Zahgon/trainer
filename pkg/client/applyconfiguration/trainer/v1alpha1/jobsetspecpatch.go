@@ -27,19 +27,12 @@ type JobSetSpecPatchApplyConfiguration struct {
 
 // JobSetSpecPatchApplyConfiguration constructs a declarative configuration of the JobSetSpecPatch type for use with
 // apply.
-func JobSetSpecPatch() *JobSetSpecPatchApplyConfiguration {
-	return &JobSetSpecPatchApplyConfiguration{}
-}
+func JobSetSpecPatch() *JobSetSpecPatchApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithReplicatedJobs adds the given value to the ReplicatedJobs field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the ReplicatedJobs field.
 func (b *JobSetSpecPatchApplyConfiguration) WithReplicatedJobs(values ...*ReplicatedJobPatchApplyConfiguration) *JobSetSpecPatchApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithReplicatedJobs")
-		}
-		b.ReplicatedJobs = append(b.ReplicatedJobs, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

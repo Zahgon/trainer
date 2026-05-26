@@ -17,23 +17,17 @@ limitations under the License.
 package trainjob
 
 import (
-	"k8s.io/apimachinery/pkg/api/meta"
-	"k8s.io/utils/ptr"
-
 	trainer "github.com/kubeflow/trainer/v2/pkg/apis/trainer/v1alpha1"
 )
 
-func IsTrainJobFinished(trainJob *trainer.TrainJob) bool {
-	return meta.IsStatusConditionTrue(trainJob.Status.Conditions, trainer.TrainJobComplete) ||
-		meta.IsStatusConditionTrue(trainJob.Status.Conditions, trainer.TrainJobFailed)
-}
+func IsTrainJobFinished(trainJob *trainer.TrainJob) bool { _ = "STUB: not implemented"; return false }
 
 func RuntimeRefIsTrainingRuntime(ref trainer.RuntimeRef) bool {
-	return ptr.Equal(ref.APIGroup, &trainer.GroupVersion.Group) &&
-		ptr.Equal(ref.Kind, ptr.To(trainer.TrainingRuntimeKind))
+	_ = "STUB: not implemented"
+	return false
 }
 
 func RuntimeRefIsClusterTrainingRuntime(ref trainer.RuntimeRef) bool {
-	return ptr.Equal(ref.APIGroup, &trainer.GroupVersion.Group) &&
-		ptr.Equal(ref.Kind, ptr.To(trainer.ClusterTrainingRuntimeKind))
+	_ = "STUB: not implemented"
+	return false
 }

@@ -19,7 +19,6 @@ package core
 import (
 	"context"
 	"errors"
-	"fmt"
 
 	apiruntime "k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -29,9 +28,7 @@ import (
 
 	configapi "github.com/kubeflow/trainer/v2/pkg/apis/config/v1alpha1"
 	trainer "github.com/kubeflow/trainer/v2/pkg/apis/trainer/v1alpha1"
-	"github.com/kubeflow/trainer/v2/pkg/constants"
 	"github.com/kubeflow/trainer/v2/pkg/runtime"
-	trainingruntime "github.com/kubeflow/trainer/v2/pkg/util/trainingruntime"
 )
 
 var (
@@ -50,60 +47,33 @@ var ClusterTrainingRuntimeGroupKind = schema.GroupKind{
 }.String()
 
 func NewClusterTrainingRuntime(context.Context, client.Client, client.FieldIndexer, *configapi.Configuration) (runtime.Runtime, error) {
-	return &ClusterTrainingRuntime{
-		TrainingRuntime: trainingRuntimeFactory,
-	}, nil
+	_ = "STUB: not implemented"
+	return *new(runtime.Runtime), nil
 }
 
 func (r *ClusterTrainingRuntime) NewObjects(ctx context.Context, trainJob *trainer.TrainJob) ([]apiruntime.ApplyConfiguration, error) {
-	var clTrainingRuntime trainer.ClusterTrainingRuntime
-	if err := r.client.Get(ctx, client.ObjectKey{Name: trainJob.Spec.RuntimeRef.Name}, &clTrainingRuntime); err != nil {
-		return nil, fmt.Errorf("%w: %w", errorNotFoundSpecifiedClusterTrainingRuntime, err)
-	}
-
-	info, err := r.RuntimeInfo(trainJob, clTrainingRuntime.Spec.Template, clTrainingRuntime.Spec.MLPolicy, clTrainingRuntime.Spec.PodGroupPolicy)
-	if err != nil {
-		return nil, err
-	}
-	return r.framework.RunComponentBuilderPlugins(ctx, info, trainJob)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (r *ClusterTrainingRuntime) RuntimeInfo(
 	trainJob *trainer.TrainJob, runtimeTemplateSpec any, mlPolicy *trainer.MLPolicy, podGroupPolicy *trainer.PodGroupPolicy,
 ) (*runtime.Info, error) {
-	return r.TrainingRuntime.RuntimeInfo(trainJob, runtimeTemplateSpec, mlPolicy, podGroupPolicy)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (r *ClusterTrainingRuntime) TrainJobStatus(ctx context.Context, trainJob *trainer.TrainJob) (*trainer.TrainJobStatus, error) {
-	return r.TrainingRuntime.TrainJobStatus(ctx, trainJob)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (r *ClusterTrainingRuntime) EventHandlerRegistrars() []runtime.ReconcilerBuilder {
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (r *ClusterTrainingRuntime) ValidateObjects(ctx context.Context, old, new *trainer.TrainJob) (admission.Warnings, field.ErrorList) {
-	clusterTrainingRuntime := &trainer.ClusterTrainingRuntime{}
-	if err := r.client.Get(ctx, client.ObjectKey{
-		Name: new.Spec.RuntimeRef.Name,
-	}, clusterTrainingRuntime); err != nil {
-		return nil, field.ErrorList{
-			field.Invalid(field.NewPath("spec", "RuntimeRef"), new.Spec.RuntimeRef,
-				fmt.Sprintf("%v: specified clusterTrainingRuntime must be created before the TrainJob is created", err)),
-		}
-	}
-	var warnings admission.Warnings
-	if trainingruntime.IsSupportDeprecated(clusterTrainingRuntime.Labels) {
-		warnings = append(warnings, fmt.Sprintf(
-			"Referenced ClusterTrainingRuntime \"%s\" is deprecated and will be removed in a future release of Kubeflow Trainer. See runtime deprecation policy: %s",
-			clusterTrainingRuntime.Name,
-			constants.RuntimeDeprecationPolicyURL,
-		))
-	}
-	info, _ := r.newRuntimeInfo(new, clusterTrainingRuntime.Spec.Template, clusterTrainingRuntime.Spec.MLPolicy, clusterTrainingRuntime.Spec.PodGroupPolicy)
-	fwWarnings, errs := r.framework.RunCustomValidationPlugins(ctx, info, old, new)
-	if len(fwWarnings) != 0 {
-		warnings = append(warnings, fwWarnings...)
-	}
-	return warnings, errs
+	_ = "STUB: not implemented"
+	return *new(admission.Warnings), *new(field.ErrorList)
 }

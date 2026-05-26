@@ -40,46 +40,48 @@ type MLPolicySourceApplyConfiguration struct {
 
 // MLPolicySourceApplyConfiguration constructs a declarative configuration of the MLPolicySource type for use with
 // apply.
-func MLPolicySource() *MLPolicySourceApplyConfiguration {
-	return &MLPolicySourceApplyConfiguration{}
-}
+func MLPolicySource() *MLPolicySourceApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithTorch sets the Torch field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Torch field is set to the value of the last call.
 func (b *MLPolicySourceApplyConfiguration) WithTorch(value trainerv1alpha1.TorchMLPolicySource) *MLPolicySourceApplyConfiguration {
-	b.Torch = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithMPI sets the MPI field in the declarative configuration to the given value
+	// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+	// If called multiple times, the MPI field is set to the value of the last call.
 }
 
-// WithMPI sets the MPI field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the MPI field is set to the value of the last call.
 func (b *MLPolicySourceApplyConfiguration) WithMPI(value *MPIMLPolicySourceApplyConfiguration) *MLPolicySourceApplyConfiguration {
-	b.MPI = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithFlux sets the Flux field in the declarative configuration to the given value
+	// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+	// If called multiple times, the Flux field is set to the value of the last call.
 }
 
-// WithFlux sets the Flux field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the Flux field is set to the value of the last call.
 func (b *MLPolicySourceApplyConfiguration) WithFlux(value *FluxMLPolicySourceApplyConfiguration) *MLPolicySourceApplyConfiguration {
-	b.Flux = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithJAX sets the JAX field in the declarative configuration to the given value
+	// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+	// If called multiple times, the JAX field is set to the value of the last call.
 }
 
-// WithJAX sets the JAX field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the JAX field is set to the value of the last call.
 func (b *MLPolicySourceApplyConfiguration) WithJAX(value trainerv1alpha1.JAXMLPolicySource) *MLPolicySourceApplyConfiguration {
-	b.JAX = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// WithXGBoost sets the XGBoost field in the declarative configuration to the given value
+	// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+	// If called multiple times, the XGBoost field is set to the value of the last call.
 }
 
-// WithXGBoost sets the XGBoost field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the XGBoost field is set to the value of the last call.
 func (b *MLPolicySourceApplyConfiguration) WithXGBoost(value trainerv1alpha1.XGBoostMLPolicySource) *MLPolicySourceApplyConfiguration {
-	b.XGBoost = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

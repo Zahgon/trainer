@@ -18,11 +18,8 @@ package webhooks
 
 import (
 	"context"
-	"fmt"
 
-	"k8s.io/apimachinery/pkg/util/sets"
 	"k8s.io/apimachinery/pkg/util/validation/field"
-	"k8s.io/klog/v2"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"
 	jobsetv1alpha2 "sigs.k8s.io/jobset/api/jobset/v1alpha2"
@@ -51,63 +48,30 @@ type TrainingRuntimeValidator struct{}
 
 var _ admission.Validator[*trainer.TrainingRuntime] = (*TrainingRuntimeValidator)(nil)
 
-func setupWebhookForTrainingRuntime(mgr ctrl.Manager) error {
-	return ctrl.NewWebhookManagedBy(mgr, &trainer.TrainingRuntime{}).
-		WithValidator(&TrainingRuntimeValidator{}).
-		Complete()
-}
+func setupWebhookForTrainingRuntime(mgr ctrl.Manager) error { _ = "STUB: not implemented"; return nil }
 
 func (w *TrainingRuntimeValidator) ValidateCreate(ctx context.Context, obj *trainer.TrainingRuntime) (admission.Warnings, error) {
-	log := ctrl.LoggerFrom(ctx).WithName("trainingruntime-webhook")
-	log.V(5).Info("Validating create", "trainingRuntime", klog.KObj(obj))
-	return nil, validateReplicatedJobs(obj.Spec.Template.Spec.ReplicatedJobs).ToAggregate()
+	_ = "STUB: not implemented"
+	return *new(admission.Warnings), nil
 }
 
 func validateReplicatedJobs(rJobs []jobsetv1alpha2.ReplicatedJob) field.ErrorList {
-	ancestors := sets.New(constants.AncestorTrainer, constants.ModelInitializer, constants.DatasetInitializer)
-	rJobsPath := field.NewPath("spec").
-		Child("template").
-		Child("spec").
-		Child("replicatedJobs")
-	var allErrs field.ErrorList
-	for idx, rJob := range rJobs {
-		if rJob.Template.Labels == nil {
-			continue
-		}
-
-		if labelAncestor, ok := rJob.Template.Labels[constants.LabelTrainJobAncestor]; ok && ancestors.Has(labelAncestor) {
-			if rJob.Replicas != 1 {
-				allErrs = append(allErrs, field.Invalid(rJobsPath.Index(idx).Child("replicas"), rJob.Replicas, rJobReplicasErrorMsg))
-			}
-
-			// Validate replicated job contains the required containers.
-			// Mapping of the ancestor labels to the containers:
-			// 1. dataset-initializer - dataset-initializer
-			// 2. model-initializer - model-initializer
-			// 3. trainer - node
-			hasRequiredContainer := false
-			for _, container := range rJob.Template.Spec.Template.Spec.Containers {
-				if container.Name == expectedContainerNames[labelAncestor] {
-					hasRequiredContainer = true
-					break
-				}
-			}
-			if !hasRequiredContainer {
-				allErrs = append(allErrs, field.Invalid(
-					rJobsPath.Index(idx).Child("template").Child("spec").Child("template").Child("spec").Child("containers"),
-					rJob.Template.Spec.Template.Spec.Containers,
-					fmt.Sprintf(rJobContainerNamesErrorMsg, labelAncestor),
-				))
-			}
-		}
-	}
-	return allErrs
+	_ = "STUB: not implemented"
+	return *new(field.ErrorList)
 }
 
+// Validate replicated job contains the required containers.
+// Mapping of the ancestor labels to the containers:
+// 1. dataset-initializer - dataset-initializer
+// 2. model-initializer - model-initializer
+// 3. trainer - node
+
 func (w *TrainingRuntimeValidator) ValidateUpdate(ctx context.Context, oldObj, newObj *trainer.TrainingRuntime) (admission.Warnings, error) {
-	return nil, nil
+	_ = "STUB: not implemented"
+	return *new(admission.Warnings), nil
 }
 
 func (w *TrainingRuntimeValidator) ValidateDelete(ctx context.Context, obj *trainer.TrainingRuntime) (admission.Warnings, error) {
-	return nil, nil
+	_ = "STUB: not implemented"
+	return *new(admission.Warnings), nil
 }

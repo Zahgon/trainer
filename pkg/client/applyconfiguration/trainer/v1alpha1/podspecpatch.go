@@ -52,73 +52,54 @@ type PodSpecPatchApplyConfiguration struct {
 
 // PodSpecPatchApplyConfiguration constructs a declarative configuration of the PodSpecPatch type for use with
 // apply.
-func PodSpecPatch() *PodSpecPatchApplyConfiguration {
-	return &PodSpecPatchApplyConfiguration{}
-}
+func PodSpecPatch() *PodSpecPatchApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithServiceAccountName sets the ServiceAccountName field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the ServiceAccountName field is set to the value of the last call.
 func (b *PodSpecPatchApplyConfiguration) WithServiceAccountName(value string) *PodSpecPatchApplyConfiguration {
-	b.ServiceAccountName = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithVolumes adds the given value to the Volumes field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the Volumes field.
 func (b *PodSpecPatchApplyConfiguration) WithVolumes(values ...*v1.VolumeApplyConfiguration) *PodSpecPatchApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithVolumes")
-		}
-		b.Volumes = append(b.Volumes, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithInitContainers adds the given value to the InitContainers field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the InitContainers field.
 func (b *PodSpecPatchApplyConfiguration) WithInitContainers(values ...*ContainerPatchApplyConfiguration) *PodSpecPatchApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithInitContainers")
-		}
-		b.InitContainers = append(b.InitContainers, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithContainers adds the given value to the Containers field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the Containers field.
 func (b *PodSpecPatchApplyConfiguration) WithContainers(values ...*ContainerPatchApplyConfiguration) *PodSpecPatchApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithContainers")
-		}
-		b.Containers = append(b.Containers, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithImagePullSecrets adds the given value to the ImagePullSecrets field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the ImagePullSecrets field.
 func (b *PodSpecPatchApplyConfiguration) WithImagePullSecrets(values ...corev1.LocalObjectReference) *PodSpecPatchApplyConfiguration {
-	for i := range values {
-		b.ImagePullSecrets = append(b.ImagePullSecrets, values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithSecurityContext sets the SecurityContext field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the SecurityContext field is set to the value of the last call.
 func (b *PodSpecPatchApplyConfiguration) WithSecurityContext(value corev1.PodSecurityContext) *PodSpecPatchApplyConfiguration {
-	b.SecurityContext = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithNodeSelector puts the entries into the NodeSelector field in the declarative configuration
@@ -126,42 +107,30 @@ func (b *PodSpecPatchApplyConfiguration) WithSecurityContext(value corev1.PodSec
 // If called multiple times, the entries provided by each call will be put on the NodeSelector field,
 // overwriting an existing map entries in NodeSelector field with the same key.
 func (b *PodSpecPatchApplyConfiguration) WithNodeSelector(entries map[string]string) *PodSpecPatchApplyConfiguration {
-	if b.NodeSelector == nil && len(entries) > 0 {
-		b.NodeSelector = make(map[string]string, len(entries))
-	}
-	for k, v := range entries {
-		b.NodeSelector[k] = v
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithAffinity sets the Affinity field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Affinity field is set to the value of the last call.
 func (b *PodSpecPatchApplyConfiguration) WithAffinity(value corev1.Affinity) *PodSpecPatchApplyConfiguration {
-	b.Affinity = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithTolerations adds the given value to the Tolerations field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the Tolerations field.
 func (b *PodSpecPatchApplyConfiguration) WithTolerations(values ...*v1.TolerationApplyConfiguration) *PodSpecPatchApplyConfiguration {
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithTolerations")
-		}
-		b.Tolerations = append(b.Tolerations, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithSchedulingGates adds the given value to the SchedulingGates field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the SchedulingGates field.
 func (b *PodSpecPatchApplyConfiguration) WithSchedulingGates(values ...corev1.PodSchedulingGate) *PodSpecPatchApplyConfiguration {
-	for i := range values {
-		b.SchedulingGates = append(b.SchedulingGates, values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

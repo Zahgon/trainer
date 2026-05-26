@@ -39,111 +39,102 @@ type TrainingRuntimeApplyConfiguration struct {
 // TrainingRuntime constructs a declarative configuration of the TrainingRuntime type for use with
 // apply.
 func TrainingRuntime(name, namespace string) *TrainingRuntimeApplyConfiguration {
-	b := &TrainingRuntimeApplyConfiguration{}
-	b.WithName(name)
-	b.WithNamespace(namespace)
-	b.WithKind("TrainingRuntime")
-	b.WithAPIVersion("trainer.kubeflow.org/v1alpha1")
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (b TrainingRuntimeApplyConfiguration) IsApplyConfiguration() {}
+func (b TrainingRuntimeApplyConfiguration) IsApplyConfiguration() {
+	_ = "STUB: not implemented"
 
-// WithKind sets the Kind field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the Kind field is set to the value of the last call.
+	// WithKind sets the Kind field in the declarative configuration to the given value
+	// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+	// If called multiple times, the Kind field is set to the value of the last call.
+	return
+}
+
 func (b *TrainingRuntimeApplyConfiguration) WithKind(value string) *TrainingRuntimeApplyConfiguration {
-	b.TypeMetaApplyConfiguration.Kind = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithAPIVersion sets the APIVersion field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the APIVersion field is set to the value of the last call.
 func (b *TrainingRuntimeApplyConfiguration) WithAPIVersion(value string) *TrainingRuntimeApplyConfiguration {
-	b.TypeMetaApplyConfiguration.APIVersion = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithName sets the Name field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Name field is set to the value of the last call.
 func (b *TrainingRuntimeApplyConfiguration) WithName(value string) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	b.ObjectMetaApplyConfiguration.Name = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithGenerateName sets the GenerateName field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the GenerateName field is set to the value of the last call.
 func (b *TrainingRuntimeApplyConfiguration) WithGenerateName(value string) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	b.ObjectMetaApplyConfiguration.GenerateName = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithNamespace sets the Namespace field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Namespace field is set to the value of the last call.
 func (b *TrainingRuntimeApplyConfiguration) WithNamespace(value string) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	b.ObjectMetaApplyConfiguration.Namespace = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithUID sets the UID field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the UID field is set to the value of the last call.
 func (b *TrainingRuntimeApplyConfiguration) WithUID(value types.UID) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	b.ObjectMetaApplyConfiguration.UID = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithResourceVersion sets the ResourceVersion field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the ResourceVersion field is set to the value of the last call.
 func (b *TrainingRuntimeApplyConfiguration) WithResourceVersion(value string) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	b.ObjectMetaApplyConfiguration.ResourceVersion = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithGeneration sets the Generation field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Generation field is set to the value of the last call.
 func (b *TrainingRuntimeApplyConfiguration) WithGeneration(value int64) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	b.ObjectMetaApplyConfiguration.Generation = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithCreationTimestamp sets the CreationTimestamp field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the CreationTimestamp field is set to the value of the last call.
 func (b *TrainingRuntimeApplyConfiguration) WithCreationTimestamp(value metav1.Time) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	b.ObjectMetaApplyConfiguration.CreationTimestamp = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithDeletionTimestamp sets the DeletionTimestamp field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the DeletionTimestamp field is set to the value of the last call.
 func (b *TrainingRuntimeApplyConfiguration) WithDeletionTimestamp(value metav1.Time) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	b.ObjectMetaApplyConfiguration.DeletionTimestamp = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithDeletionGracePeriodSeconds sets the DeletionGracePeriodSeconds field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the DeletionGracePeriodSeconds field is set to the value of the last call.
 func (b *TrainingRuntimeApplyConfiguration) WithDeletionGracePeriodSeconds(value int64) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	b.ObjectMetaApplyConfiguration.DeletionGracePeriodSeconds = &value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithLabels puts the entries into the Labels field in the declarative configuration
@@ -151,14 +142,8 @@ func (b *TrainingRuntimeApplyConfiguration) WithDeletionGracePeriodSeconds(value
 // If called multiple times, the entries provided by each call will be put on the Labels field,
 // overwriting an existing map entries in Labels field with the same key.
 func (b *TrainingRuntimeApplyConfiguration) WithLabels(entries map[string]string) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	if b.ObjectMetaApplyConfiguration.Labels == nil && len(entries) > 0 {
-		b.ObjectMetaApplyConfiguration.Labels = make(map[string]string, len(entries))
-	}
-	for k, v := range entries {
-		b.ObjectMetaApplyConfiguration.Labels[k] = v
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithAnnotations puts the entries into the Annotations field in the declarative configuration
@@ -166,73 +151,60 @@ func (b *TrainingRuntimeApplyConfiguration) WithLabels(entries map[string]string
 // If called multiple times, the entries provided by each call will be put on the Annotations field,
 // overwriting an existing map entries in Annotations field with the same key.
 func (b *TrainingRuntimeApplyConfiguration) WithAnnotations(entries map[string]string) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	if b.ObjectMetaApplyConfiguration.Annotations == nil && len(entries) > 0 {
-		b.ObjectMetaApplyConfiguration.Annotations = make(map[string]string, len(entries))
-	}
-	for k, v := range entries {
-		b.ObjectMetaApplyConfiguration.Annotations[k] = v
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithOwnerReferences adds the given value to the OwnerReferences field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the OwnerReferences field.
 func (b *TrainingRuntimeApplyConfiguration) WithOwnerReferences(values ...*v1.OwnerReferenceApplyConfiguration) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	for i := range values {
-		if values[i] == nil {
-			panic("nil value passed to WithOwnerReferences")
-		}
-		b.ObjectMetaApplyConfiguration.OwnerReferences = append(b.ObjectMetaApplyConfiguration.OwnerReferences, *values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithFinalizers adds the given value to the Finalizers field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the Finalizers field.
 func (b *TrainingRuntimeApplyConfiguration) WithFinalizers(values ...string) *TrainingRuntimeApplyConfiguration {
-	b.ensureObjectMetaApplyConfigurationExists()
-	for i := range values {
-		b.ObjectMetaApplyConfiguration.Finalizers = append(b.ObjectMetaApplyConfiguration.Finalizers, values[i])
-	}
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (b *TrainingRuntimeApplyConfiguration) ensureObjectMetaApplyConfigurationExists() {
-	if b.ObjectMetaApplyConfiguration == nil {
-		b.ObjectMetaApplyConfiguration = &v1.ObjectMetaApplyConfiguration{}
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // WithSpec sets the Spec field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Spec field is set to the value of the last call.
 func (b *TrainingRuntimeApplyConfiguration) WithSpec(value *TrainingRuntimeSpecApplyConfiguration) *TrainingRuntimeApplyConfiguration {
-	b.Spec = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
+
+	// GetKind retrieves the value of the Kind field in the declarative configuration.
 }
 
-// GetKind retrieves the value of the Kind field in the declarative configuration.
 func (b *TrainingRuntimeApplyConfiguration) GetKind() *string {
-	return b.TypeMetaApplyConfiguration.Kind
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetAPIVersion retrieves the value of the APIVersion field in the declarative configuration.
 func (b *TrainingRuntimeApplyConfiguration) GetAPIVersion() *string {
-	return b.TypeMetaApplyConfiguration.APIVersion
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetName retrieves the value of the Name field in the declarative configuration.
 func (b *TrainingRuntimeApplyConfiguration) GetName() *string {
-	b.ensureObjectMetaApplyConfigurationExists()
-	return b.ObjectMetaApplyConfiguration.Name
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetNamespace retrieves the value of the Namespace field in the declarative configuration.
 func (b *TrainingRuntimeApplyConfiguration) GetNamespace() *string {
-	b.ensureObjectMetaApplyConfigurationExists()
-	return b.ObjectMetaApplyConfiguration.Namespace
+	_ = "STUB: not implemented"
+	return nil
 }

@@ -24,44 +24,14 @@ import (
 
 // validate validates the configuration.
 func validate(cfg *configapi.Configuration) field.ErrorList {
-	var allErrs field.ErrorList
-
-	// Validate webhook port
-	if cfg.Webhook.Port != nil && (*cfg.Webhook.Port < 1 || *cfg.Webhook.Port > 65535) {
-		allErrs = append(allErrs, field.Invalid(field.NewPath("webhook", "port"), *cfg.Webhook.Port, "must be between 1 and 65535"))
-	}
-
-	// Validate client connection QPS and Burst
-	if cfg.ClientConnection != nil {
-		if cfg.ClientConnection.QPS != nil && *cfg.ClientConnection.QPS < 0 {
-			allErrs = append(allErrs, field.Invalid(field.NewPath("clientConnection", "qps"), *cfg.ClientConnection.QPS, "must be greater than or equal to 0"))
-		}
-		if cfg.ClientConnection.Burst != nil && *cfg.ClientConnection.Burst < 0 {
-			allErrs = append(allErrs, field.Invalid(field.NewPath("clientConnection", "burst"), *cfg.ClientConnection.Burst, "must be greater than or equal to 0"))
-		}
-	}
-
-	// Validate GroupKindConcurrency values
-	if cfg.Controller != nil && cfg.Controller.GroupKindConcurrency != nil {
-		for gk, concurrency := range cfg.Controller.GroupKindConcurrency {
-			if concurrency < 1 {
-				allErrs = append(allErrs, field.Invalid(field.NewPath("controller", "groupKindConcurrency").Key(gk), concurrency, "must be greater than 0"))
-			}
-		}
-	}
-
-	// Validate status server config
-	if cfg.StatusServer != nil {
-		if cfg.StatusServer.Port != nil && (*cfg.StatusServer.Port < 1 || *cfg.StatusServer.Port > 65535) {
-			allErrs = append(allErrs, field.Invalid(field.NewPath("statusServer", "port"), *cfg.StatusServer.Port, "must be between 1 and 65535"))
-		}
-		if cfg.StatusServer.QPS != nil && *cfg.StatusServer.QPS < 0 {
-			allErrs = append(allErrs, field.Invalid(field.NewPath("statusServer", "qps"), *cfg.StatusServer.QPS, "must be greater than or equal to 0"))
-		}
-		if cfg.StatusServer.Burst != nil && *cfg.StatusServer.Burst < 0 {
-			allErrs = append(allErrs, field.Invalid(field.NewPath("statusServer", "burst"), *cfg.StatusServer.Burst, "must be greater than or equal to 0"))
-		}
-	}
-
-	return allErrs
+	_ = "STUB: not implemented"
+	return *new(field.ErrorList)
 }
+
+// Validate webhook port
+
+// Validate client connection QPS and Burst
+
+// Validate GroupKindConcurrency values
+
+// Validate status server config

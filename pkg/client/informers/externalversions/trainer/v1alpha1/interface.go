@@ -38,20 +38,24 @@ type version struct {
 
 // New returns a new Interface.
 func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakListOptions internalinterfaces.TweakListOptionsFunc) Interface {
-	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
+	_ = "STUB: not implemented"
+	return *new(Interface)
 }
 
 // ClusterTrainingRuntimes returns a ClusterTrainingRuntimeInformer.
 func (v *version) ClusterTrainingRuntimes() ClusterTrainingRuntimeInformer {
-	return &clusterTrainingRuntimeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+	_ = "STUB: not implemented"
+	return *new(ClusterTrainingRuntimeInformer)
 }
 
 // TrainJobs returns a TrainJobInformer.
 func (v *version) TrainJobs() TrainJobInformer {
-	return &trainJobInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+	_ = "STUB: not implemented"
+	return *new(TrainJobInformer)
 }
 
 // TrainingRuntimes returns a TrainingRuntimeInformer.
 func (v *version) TrainingRuntimes() TrainingRuntimeInformer {
-	return &trainingRuntimeInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+	_ = "STUB: not implemented"
+	return *new(TrainingRuntimeInformer)
 }

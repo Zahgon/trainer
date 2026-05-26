@@ -27,14 +27,12 @@ type JobSpecPatchApplyConfiguration struct {
 
 // JobSpecPatchApplyConfiguration constructs a declarative configuration of the JobSpecPatch type for use with
 // apply.
-func JobSpecPatch() *JobSpecPatchApplyConfiguration {
-	return &JobSpecPatchApplyConfiguration{}
-}
+func JobSpecPatch() *JobSpecPatchApplyConfiguration { _ = "STUB: not implemented"; return nil }
 
 // WithTemplate sets the Template field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Template field is set to the value of the last call.
 func (b *JobSpecPatchApplyConfiguration) WithTemplate(value *PodTemplatePatchApplyConfiguration) *JobSpecPatchApplyConfiguration {
-	b.Template = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

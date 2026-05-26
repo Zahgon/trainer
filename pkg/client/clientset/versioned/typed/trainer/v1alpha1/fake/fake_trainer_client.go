@@ -27,20 +27,23 @@ type FakeTrainerV1alpha1 struct {
 }
 
 func (c *FakeTrainerV1alpha1) ClusterTrainingRuntimes() v1alpha1.ClusterTrainingRuntimeInterface {
-	return newFakeClusterTrainingRuntimes(c)
+	_ = "STUB: not implemented"
+	return *new(v1alpha1.ClusterTrainingRuntimeInterface)
 }
 
 func (c *FakeTrainerV1alpha1) TrainJobs(namespace string) v1alpha1.TrainJobInterface {
-	return newFakeTrainJobs(c, namespace)
+	_ = "STUB: not implemented"
+	return *new(v1alpha1.TrainJobInterface)
 }
 
 func (c *FakeTrainerV1alpha1) TrainingRuntimes(namespace string) v1alpha1.TrainingRuntimeInterface {
-	return newFakeTrainingRuntimes(c, namespace)
+	_ = "STUB: not implemented"
+	return *new(v1alpha1.TrainingRuntimeInterface)
 }
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeTrainerV1alpha1) RESTClient() rest.Interface {
-	var ret *rest.RESTClient
-	return ret
+	_ = "STUB: not implemented"
+	return *new(rest.Interface)
 }

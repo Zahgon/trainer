@@ -32,13 +32,14 @@ type VolcanoPodGroupPolicySourceApplyConfiguration struct {
 // VolcanoPodGroupPolicySourceApplyConfiguration constructs a declarative configuration of the VolcanoPodGroupPolicySource type for use with
 // apply.
 func VolcanoPodGroupPolicySource() *VolcanoPodGroupPolicySourceApplyConfiguration {
-	return &VolcanoPodGroupPolicySourceApplyConfiguration{}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithNetworkTopology sets the NetworkTopology field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the NetworkTopology field is set to the value of the last call.
 func (b *VolcanoPodGroupPolicySourceApplyConfiguration) WithNetworkTopology(value *v1beta1.NetworkTopologySpecApplyConfiguration) *VolcanoPodGroupPolicySourceApplyConfiguration {
-	b.NetworkTopology = value
-	return b
+	_ = "STUB: not implemented"
+	return nil
 }

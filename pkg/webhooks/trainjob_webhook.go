@@ -18,13 +18,7 @@ package webhooks
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
 
-	admissionv1 "k8s.io/api/admission/v1"
-	"k8s.io/apimachinery/pkg/api/equality"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/klog/v2"
 	"k8s.io/utils/clock"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"
@@ -43,51 +37,7 @@ type TrainJobDefaulter struct {
 var _ admission.Defaulter[*trainer.TrainJob] = (*TrainJobDefaulter)(nil)
 
 func (d *TrainJobDefaulter) Default(ctx context.Context, trainJob *trainer.TrainJob) error {
-	log := ctrl.LoggerFrom(ctx).WithName("trainJob-webhook")
-	log.V(5).Info("Defaulting", "TrainJob", klog.KObj(trainJob))
-
-	now := metav1.NewTime(d.clock.Now())
-
-	req, err := admission.RequestFromContext(ctx)
-	if err != nil {
-		return err
-	}
-
-	var oldObj *trainer.TrainJob
-	if req.Operation == admissionv1.Update {
-		oldObj = &trainer.TrainJob{}
-		if err := json.Unmarshal(req.OldObject.Raw, oldObj); err != nil {
-			return err
-		}
-	}
-
-	if oldObj == nil {
-		for i := range trainJob.Spec.RuntimePatches {
-			if trainJob.Spec.RuntimePatches[i].Time == nil {
-				trainJob.Spec.RuntimePatches[i].Time = &now
-			}
-		}
-		return nil
-	}
-
-	oldByManager := make(map[string]trainer.RuntimePatch, len(oldObj.Spec.RuntimePatches))
-	for _, p := range oldObj.Spec.RuntimePatches {
-		oldByManager[p.Manager] = p
-	}
-	for i := range trainJob.Spec.RuntimePatches {
-		patch := &trainJob.Spec.RuntimePatches[i]
-		if old, ok := oldByManager[patch.Manager]; ok {
-			oldCmp, newCmp := old, *patch
-			oldCmp.Time, newCmp.Time = nil, nil
-			if equality.Semantic.DeepEqual(oldCmp, newCmp) {
-				patch.Time = old.Time
-			} else {
-				patch.Time = &now
-			}
-		} else if patch.Time == nil {
-			patch.Time = &now
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -101,38 +51,21 @@ type TrainJobValidator struct {
 var _ admission.Validator[*trainer.TrainJob] = (*TrainJobValidator)(nil)
 
 func setupWebhookForTrainJob(mgr ctrl.Manager, run map[string]runtime.Runtime) error {
-	return ctrl.NewWebhookManagedBy(mgr, &trainer.TrainJob{}).
-		WithDefaulter(&TrainJobDefaulter{clock: clock.RealClock{}}).
-		WithValidator(&TrainJobValidator{runtimes: run}).
-		Complete()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (w *TrainJobValidator) ValidateCreate(ctx context.Context, obj *trainer.TrainJob) (admission.Warnings, error) {
-	log := ctrl.LoggerFrom(ctx).WithName("trainJob-webhook")
-	log.V(5).Info("Validating create", "TrainJob", klog.KObj(obj))
-
-	runtimeRefGK := runtime.RuntimeRefToRuntimeRegistryKey(obj.Spec.RuntimeRef)
-	runtime, ok := w.runtimes[runtimeRefGK]
-	if !ok {
-		return nil, fmt.Errorf("unsupported runtime: %s", runtimeRefGK)
-	}
-	warnings, errors := runtime.ValidateObjects(ctx, nil, obj)
-	return warnings, errors.ToAggregate()
+	_ = "STUB: not implemented"
+	return *new(admission.Warnings), nil
 }
 
 func (w *TrainJobValidator) ValidateUpdate(ctx context.Context, oldObj, newObj *trainer.TrainJob) (admission.Warnings, error) {
-	log := ctrl.LoggerFrom(ctx).WithName("trainJob-webhook")
-	log.V(5).Info("Validating update", "TrainJob", klog.KObj(newObj))
-
-	runtimeRefGK := runtime.RuntimeRefToRuntimeRegistryKey(newObj.Spec.RuntimeRef)
-	runtime, ok := w.runtimes[runtimeRefGK]
-	if !ok {
-		return nil, fmt.Errorf("unsupported runtime: %s", runtimeRefGK)
-	}
-	warnings, errors := runtime.ValidateObjects(ctx, oldObj, newObj)
-	return warnings, errors.ToAggregate()
+	_ = "STUB: not implemented"
+	return *new(admission.Warnings), nil
 }
 
 func (w *TrainJobValidator) ValidateDelete(ctx context.Context, obj *trainer.TrainJob) (admission.Warnings, error) {
-	return nil, nil
+	_ = "STUB: not implemented"
+	return *new(admission.Warnings), nil
 }

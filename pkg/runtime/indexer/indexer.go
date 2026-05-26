@@ -19,11 +19,7 @@ package indexer
 import (
 	"errors"
 
-	"k8s.io/utils/ptr"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-
-	trainer "github.com/kubeflow/trainer/v2/pkg/apis/trainer/v1alpha1"
-	"github.com/kubeflow/trainer/v2/pkg/util/trainjob"
 )
 
 const (
@@ -39,52 +35,21 @@ var (
 )
 
 func IndexTrainingRuntimeContainerRuntimeClass(obj client.Object) []string {
-	runtime, ok := obj.(*trainer.TrainingRuntime)
-	if !ok {
-		return nil
-	}
-	var runtimeClasses []string
-	for _, rJob := range runtime.Spec.Template.Spec.ReplicatedJobs {
-		if rJob.Template.Spec.Template.Spec.RuntimeClassName != nil {
-			runtimeClasses = append(runtimeClasses, *rJob.Template.Spec.Template.Spec.RuntimeClassName)
-		}
-	}
-	return runtimeClasses
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func IndexClusterTrainingRuntimeContainerRuntimeClass(obj client.Object) []string {
-	clRuntime, ok := obj.(*trainer.ClusterTrainingRuntime)
-	if !ok {
-		return nil
-	}
-	var runtimeClasses []string
-	for _, rJob := range clRuntime.Spec.Template.Spec.ReplicatedJobs {
-		if rJob.Template.Spec.Template.Spec.RuntimeClassName != nil {
-			runtimeClasses = append(runtimeClasses, *rJob.Template.Spec.Template.Spec.RuntimeClassName)
-		}
-	}
-	return runtimeClasses
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func IndexTrainJobTrainingRuntime(obj client.Object) []string {
-	trainJob, ok := obj.(*trainer.TrainJob)
-	if !ok {
-		return nil
-	}
-	if trainjob.RuntimeRefIsTrainingRuntime(trainJob.Spec.RuntimeRef) {
-		return []string{trainJob.Spec.RuntimeRef.Name}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func IndexTrainJobClusterTrainingRuntime(obj client.Object) []string {
-	trainJob, ok := obj.(*trainer.TrainJob)
-	if !ok {
-		return nil
-	}
-	if ptr.Deref(trainJob.Spec.RuntimeRef.APIGroup, "") == trainer.GroupVersion.Group &&
-		ptr.Deref(trainJob.Spec.RuntimeRef.Kind, "") == trainer.ClusterTrainingRuntimeKind {
-		return []string{trainJob.Spec.RuntimeRef.Name}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }

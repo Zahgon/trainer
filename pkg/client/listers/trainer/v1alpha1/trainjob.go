@@ -41,12 +41,14 @@ type trainJobLister struct {
 
 // NewTrainJobLister returns a new TrainJobLister.
 func NewTrainJobLister(indexer cache.Indexer) TrainJobLister {
-	return &trainJobLister{listers.New[*trainerv1alpha1.TrainJob](indexer, trainerv1alpha1.Resource("trainjob"))}
+	_ = "STUB: not implemented"
+	return *new(TrainJobLister)
 }
 
 // TrainJobs returns an object that can list and get TrainJobs.
 func (s *trainJobLister) TrainJobs(namespace string) TrainJobNamespaceLister {
-	return trainJobNamespaceLister{listers.NewNamespaced[*trainerv1alpha1.TrainJob](s.ResourceIndexer, namespace)}
+	_ = "STUB: not implemented"
+	return *new(TrainJobNamespaceLister)
 }
 
 // TrainJobNamespaceLister helps list and get TrainJobs.
